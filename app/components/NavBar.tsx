@@ -1,8 +1,16 @@
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-export default function NavBar() {
+function NavBar() {
   return (
-    <div>NavBar</div>
-  )
+    <nav className="bg-cream">
+      <div>
+        <Link href="/">HOME</Link>
+        <Link href="/regist">REGIST</Link>
+        <Link href="/about">ABOUT US</Link>
+      </div>
+    </nav>
+  );
 }
 
+export default NavBar;
