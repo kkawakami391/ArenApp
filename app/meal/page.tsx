@@ -9,6 +9,9 @@ export default function MealPage() {
   const [meal, setMeal] = useState("");
   const [mealQnt, setMealQnt] = useState("");
 
+  // Funcion para registrar los datos a la base de datos
+  function handleRegist(meal: string, mealQnt: number) {}
+
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-col items-start space-y-1">
