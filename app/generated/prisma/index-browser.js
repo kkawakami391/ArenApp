@@ -135,6 +135,13 @@ exports.Prisma.ParentScalarFieldEnum = {
   babyId: 'babyId'
 };
 
+exports.Prisma.MealScalarFieldEnum = {
+  id: 'id',
+  meal: 'meal',
+  mealQnt: 'mealQnt',
+  babyId: 'babyId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -147,8 +154,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Baby: 'Baby',
-  Parent: 'Parent'
+  baby: 'baby',
+  parent: 'parent',
+  meal: 'meal'
 };
 
 /**

@@ -14,15 +14,20 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Baby
+ * Model baby
  * 
  */
-export type Baby = $Result.DefaultSelection<Prisma.$BabyPayload>
+export type baby = $Result.DefaultSelection<Prisma.$babyPayload>
 /**
- * Model Parent
+ * Model parent
  * 
  */
-export type Parent = $Result.DefaultSelection<Prisma.$ParentPayload>
+export type parent = $Result.DefaultSelection<Prisma.$parentPayload>
+/**
+ * Model meal
+ * 
+ */
+export type meal = $Result.DefaultSelection<Prisma.$mealPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -150,24 +155,34 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.baby`: Exposes CRUD operations for the **Baby** model.
+   * `prisma.baby`: Exposes CRUD operations for the **baby** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Babies
     * const babies = await prisma.baby.findMany()
     * ```
     */
-  get baby(): Prisma.BabyDelegate<ExtArgs, ClientOptions>;
+  get baby(): Prisma.babyDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.parent`: Exposes CRUD operations for the **Parent** model.
+   * `prisma.parent`: Exposes CRUD operations for the **parent** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Parents
     * const parents = await prisma.parent.findMany()
     * ```
     */
-  get parent(): Prisma.ParentDelegate<ExtArgs, ClientOptions>;
+  get parent(): Prisma.parentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.meal`: Exposes CRUD operations for the **meal** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Meals
+    * const meals = await prisma.meal.findMany()
+    * ```
+    */
+  get meal(): Prisma.mealDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -608,8 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Baby: 'Baby',
-    Parent: 'Parent'
+    baby: 'baby',
+    parent: 'parent',
+    meal: 'meal'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,155 +644,229 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "baby" | "parent"
+      modelProps: "baby" | "parent" | "meal"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Baby: {
-        payload: Prisma.$BabyPayload<ExtArgs>
-        fields: Prisma.BabyFieldRefs
+      baby: {
+        payload: Prisma.$babyPayload<ExtArgs>
+        fields: Prisma.babyFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.BabyFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload> | null
+            args: Prisma.babyFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.BabyFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           findFirst: {
-            args: Prisma.BabyFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload> | null
+            args: Prisma.babyFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.BabyFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           findMany: {
-            args: Prisma.BabyFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>[]
+            args: Prisma.babyFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>[]
           }
           create: {
-            args: Prisma.BabyCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           createMany: {
-            args: Prisma.BabyCreateManyArgs<ExtArgs>
+            args: Prisma.babyCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.BabyCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>[]
+            args: Prisma.babyCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>[]
           }
           delete: {
-            args: Prisma.BabyDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           update: {
-            args: Prisma.BabyUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           deleteMany: {
-            args: Prisma.BabyDeleteManyArgs<ExtArgs>
+            args: Prisma.babyDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.BabyUpdateManyArgs<ExtArgs>
+            args: Prisma.babyUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.BabyUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>[]
+            args: Prisma.babyUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>[]
           }
           upsert: {
-            args: Prisma.BabyUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$BabyPayload>
+            args: Prisma.babyUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$babyPayload>
           }
           aggregate: {
             args: Prisma.BabyAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateBaby>
           }
           groupBy: {
-            args: Prisma.BabyGroupByArgs<ExtArgs>
+            args: Prisma.babyGroupByArgs<ExtArgs>
             result: $Utils.Optional<BabyGroupByOutputType>[]
           }
           count: {
-            args: Prisma.BabyCountArgs<ExtArgs>
+            args: Prisma.babyCountArgs<ExtArgs>
             result: $Utils.Optional<BabyCountAggregateOutputType> | number
           }
         }
       }
-      Parent: {
-        payload: Prisma.$ParentPayload<ExtArgs>
-        fields: Prisma.ParentFieldRefs
+      parent: {
+        payload: Prisma.$parentPayload<ExtArgs>
+        fields: Prisma.parentFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ParentFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload> | null
+            args: Prisma.parentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ParentFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           findFirst: {
-            args: Prisma.ParentFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload> | null
+            args: Prisma.parentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ParentFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           findMany: {
-            args: Prisma.ParentFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>[]
+            args: Prisma.parentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>[]
           }
           create: {
-            args: Prisma.ParentCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           createMany: {
-            args: Prisma.ParentCreateManyArgs<ExtArgs>
+            args: Prisma.parentCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ParentCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>[]
+            args: Prisma.parentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>[]
           }
           delete: {
-            args: Prisma.ParentDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           update: {
-            args: Prisma.ParentUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           deleteMany: {
-            args: Prisma.ParentDeleteManyArgs<ExtArgs>
+            args: Prisma.parentDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ParentUpdateManyArgs<ExtArgs>
+            args: Prisma.parentUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ParentUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>[]
+            args: Prisma.parentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>[]
           }
           upsert: {
-            args: Prisma.ParentUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ParentPayload>
+            args: Prisma.parentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$parentPayload>
           }
           aggregate: {
             args: Prisma.ParentAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateParent>
           }
           groupBy: {
-            args: Prisma.ParentGroupByArgs<ExtArgs>
+            args: Prisma.parentGroupByArgs<ExtArgs>
             result: $Utils.Optional<ParentGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ParentCountArgs<ExtArgs>
+            args: Prisma.parentCountArgs<ExtArgs>
             result: $Utils.Optional<ParentCountAggregateOutputType> | number
+          }
+        }
+      }
+      meal: {
+        payload: Prisma.$mealPayload<ExtArgs>
+        fields: Prisma.mealFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.mealFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.mealFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          findFirst: {
+            args: Prisma.mealFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.mealFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          findMany: {
+            args: Prisma.mealFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>[]
+          }
+          create: {
+            args: Prisma.mealCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          createMany: {
+            args: Prisma.mealCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.mealCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>[]
+          }
+          delete: {
+            args: Prisma.mealDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          update: {
+            args: Prisma.mealUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          deleteMany: {
+            args: Prisma.mealDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.mealUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.mealUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>[]
+          }
+          upsert: {
+            args: Prisma.mealUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mealPayload>
+          }
+          aggregate: {
+            args: Prisma.MealAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeal>
+          }
+          groupBy: {
+            args: Prisma.mealGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MealGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.mealCountArgs<ExtArgs>
+            result: $Utils.Optional<MealCountAggregateOutputType> | number
           }
         }
       }
@@ -864,8 +954,9 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    baby?: BabyOmit
-    parent?: ParentOmit
+    baby?: babyOmit
+    parent?: parentOmit
+    meal?: mealOmit
   }
 
   /* Types for Logging */
@@ -961,10 +1052,12 @@ export namespace Prisma {
 
   export type BabyCountOutputType = {
     parents: number
+    meal: number
   }
 
   export type BabyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parents?: boolean | BabyCountOutputTypeCountParentsArgs
+    meal?: boolean | BabyCountOutputTypeCountMealArgs
   }
 
   // Custom InputTypes
@@ -982,7 +1075,14 @@ export namespace Prisma {
    * BabyCountOutputType without action
    */
   export type BabyCountOutputTypeCountParentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ParentWhereInput
+    where?: parentWhereInput
+  }
+
+  /**
+   * BabyCountOutputType without action
+   */
+  export type BabyCountOutputTypeCountMealArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mealWhereInput
   }
 
 
@@ -991,7 +1091,7 @@ export namespace Prisma {
    */
 
   /**
-   * Model Baby
+   * Model baby
    */
 
   export type AggregateBaby = {
@@ -1079,37 +1179,37 @@ export namespace Prisma {
 
   export type BabyAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Baby to aggregate.
+     * Filter which baby to aggregate.
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Babies to fetch.
+     * Determine the order of babies to fetch.
      */
-    orderBy?: BabyOrderByWithRelationInput | BabyOrderByWithRelationInput[]
+    orderBy?: babyOrderByWithRelationInput | babyOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: BabyWhereUniqueInput
+    cursor?: babyWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Babies from the position of the cursor.
+     * Take `±n` babies from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Babies.
+     * Skip the first `n` babies.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Babies
+     * Count returned babies
     **/
     _count?: true | BabyCountAggregateInputType
     /**
@@ -1149,11 +1249,11 @@ export namespace Prisma {
 
 
 
-  export type BabyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: BabyWhereInput
-    orderBy?: BabyOrderByWithAggregationInput | BabyOrderByWithAggregationInput[]
+  export type babyGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: babyWhereInput
+    orderBy?: babyOrderByWithAggregationInput | babyOrderByWithAggregationInput[]
     by: BabyScalarFieldEnum[] | BabyScalarFieldEnum
-    having?: BabyScalarWhereWithAggregatesInput
+    having?: babyScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: BabyCountAggregateInputType | true
@@ -1176,7 +1276,7 @@ export namespace Prisma {
     _max: BabyMaxAggregateOutputType | null
   }
 
-  type GetBabyGroupByPayload<T extends BabyGroupByArgs> = Prisma.PrismaPromise<
+  type GetBabyGroupByPayload<T extends babyGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<BabyGroupByOutputType, T['by']> &
         {
@@ -1190,17 +1290,18 @@ export namespace Prisma {
     >
 
 
-  export type BabySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type babySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
     height?: boolean
     weight?: boolean
-    parents?: boolean | Baby$parentsArgs<ExtArgs>
+    parents?: boolean | baby$parentsArgs<ExtArgs>
+    meal?: boolean | baby$mealArgs<ExtArgs>
     _count?: boolean | BabyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["baby"]>
 
-  export type BabySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type babySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -1208,7 +1309,7 @@ export namespace Prisma {
     weight?: boolean
   }, ExtArgs["result"]["baby"]>
 
-  export type BabySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type babySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -1216,7 +1317,7 @@ export namespace Prisma {
     weight?: boolean
   }, ExtArgs["result"]["baby"]>
 
-  export type BabySelectScalar = {
+  export type babySelectScalar = {
     id?: boolean
     firstName?: boolean
     lastName?: boolean
@@ -1224,18 +1325,20 @@ export namespace Prisma {
     weight?: boolean
   }
 
-  export type BabyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "height" | "weight", ExtArgs["result"]["baby"]>
-  export type BabyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    parents?: boolean | Baby$parentsArgs<ExtArgs>
+  export type babyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "height" | "weight", ExtArgs["result"]["baby"]>
+  export type babyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parents?: boolean | baby$parentsArgs<ExtArgs>
+    meal?: boolean | baby$mealArgs<ExtArgs>
     _count?: boolean | BabyCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type BabyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type BabyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type babyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type babyIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $BabyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Baby"
+  export type $babyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "baby"
     objects: {
-      parents: Prisma.$ParentPayload<ExtArgs>[]
+      parents: Prisma.$parentPayload<ExtArgs>[]
+      meal: Prisma.$mealPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1247,18 +1350,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type BabyGetPayload<S extends boolean | null | undefined | BabyDefaultArgs> = $Result.GetResult<Prisma.$BabyPayload, S>
+  type babyGetPayload<S extends boolean | null | undefined | babyDefaultArgs> = $Result.GetResult<Prisma.$babyPayload, S>
 
-  type BabyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<BabyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type babyCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<babyFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: BabyCountAggregateInputType | true
     }
 
-  export interface BabyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Baby'], meta: { name: 'Baby' } }
+  export interface babyDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['baby'], meta: { name: 'baby' } }
     /**
      * Find zero or one Baby that matches the filter.
-     * @param {BabyFindUniqueArgs} args - Arguments to find a Baby
+     * @param {babyFindUniqueArgs} args - Arguments to find a Baby
      * @example
      * // Get one Baby
      * const baby = await prisma.baby.findUnique({
@@ -1267,12 +1370,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends BabyFindUniqueArgs>(args: SelectSubset<T, BabyFindUniqueArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends babyFindUniqueArgs>(args: SelectSubset<T, babyFindUniqueArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Baby that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {BabyFindUniqueOrThrowArgs} args - Arguments to find a Baby
+     * @param {babyFindUniqueOrThrowArgs} args - Arguments to find a Baby
      * @example
      * // Get one Baby
      * const baby = await prisma.baby.findUniqueOrThrow({
@@ -1281,13 +1384,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends BabyFindUniqueOrThrowArgs>(args: SelectSubset<T, BabyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends babyFindUniqueOrThrowArgs>(args: SelectSubset<T, babyFindUniqueOrThrowArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Baby that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyFindFirstArgs} args - Arguments to find a Baby
+     * @param {babyFindFirstArgs} args - Arguments to find a Baby
      * @example
      * // Get one Baby
      * const baby = await prisma.baby.findFirst({
@@ -1296,14 +1399,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends BabyFindFirstArgs>(args?: SelectSubset<T, BabyFindFirstArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends babyFindFirstArgs>(args?: SelectSubset<T, babyFindFirstArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Baby that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyFindFirstOrThrowArgs} args - Arguments to find a Baby
+     * @param {babyFindFirstOrThrowArgs} args - Arguments to find a Baby
      * @example
      * // Get one Baby
      * const baby = await prisma.baby.findFirstOrThrow({
@@ -1312,13 +1415,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends BabyFindFirstOrThrowArgs>(args?: SelectSubset<T, BabyFindFirstOrThrowArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends babyFindFirstOrThrowArgs>(args?: SelectSubset<T, babyFindFirstOrThrowArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Babies that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {babyFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Babies
      * const babies = await prisma.baby.findMany()
@@ -1330,11 +1433,11 @@ export namespace Prisma {
      * const babyWithIdOnly = await prisma.baby.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends BabyFindManyArgs>(args?: SelectSubset<T, BabyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends babyFindManyArgs>(args?: SelectSubset<T, babyFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Baby.
-     * @param {BabyCreateArgs} args - Arguments to create a Baby.
+     * @param {babyCreateArgs} args - Arguments to create a Baby.
      * @example
      * // Create one Baby
      * const Baby = await prisma.baby.create({
@@ -1344,11 +1447,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends BabyCreateArgs>(args: SelectSubset<T, BabyCreateArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends babyCreateArgs>(args: SelectSubset<T, babyCreateArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Babies.
-     * @param {BabyCreateManyArgs} args - Arguments to create many Babies.
+     * @param {babyCreateManyArgs} args - Arguments to create many Babies.
      * @example
      * // Create many Babies
      * const baby = await prisma.baby.createMany({
@@ -1358,11 +1461,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends BabyCreateManyArgs>(args?: SelectSubset<T, BabyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends babyCreateManyArgs>(args?: SelectSubset<T, babyCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Babies and returns the data saved in the database.
-     * @param {BabyCreateManyAndReturnArgs} args - Arguments to create many Babies.
+     * @param {babyCreateManyAndReturnArgs} args - Arguments to create many Babies.
      * @example
      * // Create many Babies
      * const baby = await prisma.baby.createManyAndReturn({
@@ -1382,11 +1485,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends BabyCreateManyAndReturnArgs>(args?: SelectSubset<T, BabyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends babyCreateManyAndReturnArgs>(args?: SelectSubset<T, babyCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Baby.
-     * @param {BabyDeleteArgs} args - Arguments to delete one Baby.
+     * @param {babyDeleteArgs} args - Arguments to delete one Baby.
      * @example
      * // Delete one Baby
      * const Baby = await prisma.baby.delete({
@@ -1396,11 +1499,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends BabyDeleteArgs>(args: SelectSubset<T, BabyDeleteArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends babyDeleteArgs>(args: SelectSubset<T, babyDeleteArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Baby.
-     * @param {BabyUpdateArgs} args - Arguments to update one Baby.
+     * @param {babyUpdateArgs} args - Arguments to update one Baby.
      * @example
      * // Update one Baby
      * const baby = await prisma.baby.update({
@@ -1413,11 +1516,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends BabyUpdateArgs>(args: SelectSubset<T, BabyUpdateArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends babyUpdateArgs>(args: SelectSubset<T, babyUpdateArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Babies.
-     * @param {BabyDeleteManyArgs} args - Arguments to filter Babies to delete.
+     * @param {babyDeleteManyArgs} args - Arguments to filter Babies to delete.
      * @example
      * // Delete a few Babies
      * const { count } = await prisma.baby.deleteMany({
@@ -1427,13 +1530,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends BabyDeleteManyArgs>(args?: SelectSubset<T, BabyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends babyDeleteManyArgs>(args?: SelectSubset<T, babyDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Babies.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {babyUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Babies
      * const baby = await prisma.baby.updateMany({
@@ -1446,11 +1549,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends BabyUpdateManyArgs>(args: SelectSubset<T, BabyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends babyUpdateManyArgs>(args: SelectSubset<T, babyUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Babies and returns the data updated in the database.
-     * @param {BabyUpdateManyAndReturnArgs} args - Arguments to update many Babies.
+     * @param {babyUpdateManyAndReturnArgs} args - Arguments to update many Babies.
      * @example
      * // Update many Babies
      * const baby = await prisma.baby.updateManyAndReturn({
@@ -1476,11 +1579,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends BabyUpdateManyAndReturnArgs>(args: SelectSubset<T, BabyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends babyUpdateManyAndReturnArgs>(args: SelectSubset<T, babyUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Baby.
-     * @param {BabyUpsertArgs} args - Arguments to update or create a Baby.
+     * @param {babyUpsertArgs} args - Arguments to update or create a Baby.
      * @example
      * // Update or create a Baby
      * const baby = await prisma.baby.upsert({
@@ -1495,14 +1598,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends BabyUpsertArgs>(args: SelectSubset<T, BabyUpsertArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends babyUpsertArgs>(args: SelectSubset<T, babyUpsertArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Babies.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyCountArgs} args - Arguments to filter Babies to count.
+     * @param {babyCountArgs} args - Arguments to filter Babies to count.
      * @example
      * // Count the number of Babies
      * const count = await prisma.baby.count({
@@ -1511,8 +1614,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends BabyCountArgs>(
-      args?: Subset<T, BabyCountArgs>,
+    count<T extends babyCountArgs>(
+      args?: Subset<T, babyCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -1551,7 +1654,7 @@ export namespace Prisma {
      * Group by Baby.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {BabyGroupByArgs} args - Group by arguments.
+     * @param {babyGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -1566,14 +1669,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends BabyGroupByArgs,
+      T extends babyGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: BabyGroupByArgs['orderBy'] }
-        : { orderBy?: BabyGroupByArgs['orderBy'] },
+        ? { orderBy: babyGroupByArgs['orderBy'] }
+        : { orderBy?: babyGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -1622,22 +1725,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, BabyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBabyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, babyGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBabyGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Baby model
+   * Fields of the baby model
    */
-  readonly fields: BabyFieldRefs;
+  readonly fields: babyFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Baby.
+   * The delegate class that acts as a "Promise-like" for baby.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__BabyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__babyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    parents<T extends Baby$parentsArgs<ExtArgs> = {}>(args?: Subset<T, Baby$parentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    parents<T extends baby$parentsArgs<ExtArgs> = {}>(args?: Subset<T, baby$parentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    meal<T extends baby$mealArgs<ExtArgs> = {}>(args?: Subset<T, baby$mealArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1664,446 +1768,470 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Baby model
+   * Fields of the baby model
    */
-  interface BabyFieldRefs {
-    readonly id: FieldRef<"Baby", 'Int'>
-    readonly firstName: FieldRef<"Baby", 'String'>
-    readonly lastName: FieldRef<"Baby", 'String'>
-    readonly height: FieldRef<"Baby", 'Int'>
-    readonly weight: FieldRef<"Baby", 'Int'>
+  interface babyFieldRefs {
+    readonly id: FieldRef<"baby", 'Int'>
+    readonly firstName: FieldRef<"baby", 'String'>
+    readonly lastName: FieldRef<"baby", 'String'>
+    readonly height: FieldRef<"baby", 'Int'>
+    readonly weight: FieldRef<"baby", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Baby findUnique
+   * baby findUnique
    */
-  export type BabyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter, which Baby to fetch.
+     * Filter, which baby to fetch.
      */
-    where: BabyWhereUniqueInput
+    where: babyWhereUniqueInput
   }
 
   /**
-   * Baby findUniqueOrThrow
+   * baby findUniqueOrThrow
    */
-  export type BabyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter, which Baby to fetch.
+     * Filter, which baby to fetch.
      */
-    where: BabyWhereUniqueInput
+    where: babyWhereUniqueInput
   }
 
   /**
-   * Baby findFirst
+   * baby findFirst
    */
-  export type BabyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter, which Baby to fetch.
+     * Filter, which baby to fetch.
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Babies to fetch.
+     * Determine the order of babies to fetch.
      */
-    orderBy?: BabyOrderByWithRelationInput | BabyOrderByWithRelationInput[]
+    orderBy?: babyOrderByWithRelationInput | babyOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Babies.
+     * Sets the position for searching for babies.
      */
-    cursor?: BabyWhereUniqueInput
+    cursor?: babyWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Babies from the position of the cursor.
+     * Take `±n` babies from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Babies.
+     * Skip the first `n` babies.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Babies.
+     * Filter by unique combinations of babies.
      */
     distinct?: BabyScalarFieldEnum | BabyScalarFieldEnum[]
   }
 
   /**
-   * Baby findFirstOrThrow
+   * baby findFirstOrThrow
    */
-  export type BabyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter, which Baby to fetch.
+     * Filter, which baby to fetch.
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Babies to fetch.
+     * Determine the order of babies to fetch.
      */
-    orderBy?: BabyOrderByWithRelationInput | BabyOrderByWithRelationInput[]
+    orderBy?: babyOrderByWithRelationInput | babyOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Babies.
+     * Sets the position for searching for babies.
      */
-    cursor?: BabyWhereUniqueInput
+    cursor?: babyWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Babies from the position of the cursor.
+     * Take `±n` babies from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Babies.
+     * Skip the first `n` babies.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Babies.
+     * Filter by unique combinations of babies.
      */
     distinct?: BabyScalarFieldEnum | BabyScalarFieldEnum[]
   }
 
   /**
-   * Baby findMany
+   * baby findMany
    */
-  export type BabyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter, which Babies to fetch.
+     * Filter, which babies to fetch.
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Babies to fetch.
+     * Determine the order of babies to fetch.
      */
-    orderBy?: BabyOrderByWithRelationInput | BabyOrderByWithRelationInput[]
+    orderBy?: babyOrderByWithRelationInput | babyOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Babies.
+     * Sets the position for listing babies.
      */
-    cursor?: BabyWhereUniqueInput
+    cursor?: babyWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Babies from the position of the cursor.
+     * Take `±n` babies from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Babies.
+     * Skip the first `n` babies.
      */
     skip?: number
     distinct?: BabyScalarFieldEnum | BabyScalarFieldEnum[]
   }
 
   /**
-   * Baby create
+   * baby create
    */
-  export type BabyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * The data needed to create a Baby.
+     * The data needed to create a baby.
      */
-    data: XOR<BabyCreateInput, BabyUncheckedCreateInput>
+    data: XOR<babyCreateInput, babyUncheckedCreateInput>
   }
 
   /**
-   * Baby createMany
+   * baby createMany
    */
-  export type BabyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Babies.
+     * The data used to create many babies.
      */
-    data: BabyCreateManyInput | BabyCreateManyInput[]
+    data: babyCreateManyInput | babyCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Baby createManyAndReturn
+   * baby createManyAndReturn
    */
-  export type BabyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelectCreateManyAndReturn<ExtArgs> | null
+    select?: babySelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
-     * The data used to create many Babies.
+     * The data used to create many babies.
      */
-    data: BabyCreateManyInput | BabyCreateManyInput[]
+    data: babyCreateManyInput | babyCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Baby update
+   * baby update
    */
-  export type BabyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * The data needed to update a Baby.
+     * The data needed to update a baby.
      */
-    data: XOR<BabyUpdateInput, BabyUncheckedUpdateInput>
+    data: XOR<babyUpdateInput, babyUncheckedUpdateInput>
     /**
-     * Choose, which Baby to update.
+     * Choose, which baby to update.
      */
-    where: BabyWhereUniqueInput
+    where: babyWhereUniqueInput
   }
 
   /**
-   * Baby updateMany
+   * baby updateMany
    */
-  export type BabyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Babies.
+     * The data used to update babies.
      */
-    data: XOR<BabyUpdateManyMutationInput, BabyUncheckedUpdateManyInput>
+    data: XOR<babyUpdateManyMutationInput, babyUncheckedUpdateManyInput>
     /**
-     * Filter which Babies to update
+     * Filter which babies to update
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
-     * Limit how many Babies to update.
+     * Limit how many babies to update.
      */
     limit?: number
   }
 
   /**
-   * Baby updateManyAndReturn
+   * baby updateManyAndReturn
    */
-  export type BabyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelectUpdateManyAndReturn<ExtArgs> | null
+    select?: babySelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
-     * The data used to update Babies.
+     * The data used to update babies.
      */
-    data: XOR<BabyUpdateManyMutationInput, BabyUncheckedUpdateManyInput>
+    data: XOR<babyUpdateManyMutationInput, babyUncheckedUpdateManyInput>
     /**
-     * Filter which Babies to update
+     * Filter which babies to update
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
-     * Limit how many Babies to update.
+     * Limit how many babies to update.
      */
     limit?: number
   }
 
   /**
-   * Baby upsert
+   * baby upsert
    */
-  export type BabyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * The filter to search for the Baby to update in case it exists.
+     * The filter to search for the baby to update in case it exists.
      */
-    where: BabyWhereUniqueInput
+    where: babyWhereUniqueInput
     /**
-     * In case the Baby found by the `where` argument doesn't exist, create a new Baby with this data.
+     * In case the baby found by the `where` argument doesn't exist, create a new baby with this data.
      */
-    create: XOR<BabyCreateInput, BabyUncheckedCreateInput>
+    create: XOR<babyCreateInput, babyUncheckedCreateInput>
     /**
-     * In case the Baby was found with the provided `where` argument, update it with this data.
+     * In case the baby was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<BabyUpdateInput, BabyUncheckedUpdateInput>
+    update: XOR<babyUpdateInput, babyUncheckedUpdateInput>
   }
 
   /**
-   * Baby delete
+   * baby delete
    */
-  export type BabyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the baby
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: babySelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the baby
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: babyOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: babyInclude<ExtArgs> | null
     /**
-     * Filter which Baby to delete.
+     * Filter which baby to delete.
      */
-    where: BabyWhereUniqueInput
+    where: babyWhereUniqueInput
   }
 
   /**
-   * Baby deleteMany
+   * baby deleteMany
    */
-  export type BabyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type babyDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Babies to delete
+     * Filter which babies to delete
      */
-    where?: BabyWhereInput
+    where?: babyWhereInput
     /**
-     * Limit how many Babies to delete.
+     * Limit how many babies to delete.
      */
     limit?: number
   }
 
   /**
-   * Baby.parents
+   * baby.parents
    */
-  export type Baby$parentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type baby$parentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
-    where?: ParentWhereInput
-    orderBy?: ParentOrderByWithRelationInput | ParentOrderByWithRelationInput[]
-    cursor?: ParentWhereUniqueInput
+    include?: parentInclude<ExtArgs> | null
+    where?: parentWhereInput
+    orderBy?: parentOrderByWithRelationInput | parentOrderByWithRelationInput[]
+    cursor?: parentWhereUniqueInput
     take?: number
     skip?: number
     distinct?: ParentScalarFieldEnum | ParentScalarFieldEnum[]
   }
 
   /**
-   * Baby without action
+   * baby.meal
    */
-  export type BabyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type baby$mealArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Baby
+     * Select specific fields to fetch from the meal
      */
-    select?: BabySelect<ExtArgs> | null
+    select?: mealSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Baby
+     * Omit specific fields from the meal
      */
-    omit?: BabyOmit<ExtArgs> | null
+    omit?: mealOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: BabyInclude<ExtArgs> | null
+    include?: mealInclude<ExtArgs> | null
+    where?: mealWhereInput
+    orderBy?: mealOrderByWithRelationInput | mealOrderByWithRelationInput[]
+    cursor?: mealWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MealScalarFieldEnum | MealScalarFieldEnum[]
+  }
+
+  /**
+   * baby without action
+   */
+  export type babyDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the baby
+     */
+    select?: babySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the baby
+     */
+    omit?: babyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: babyInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Parent
+   * Model parent
    */
 
   export type AggregateParent = {
@@ -2181,37 +2309,37 @@ export namespace Prisma {
 
   export type ParentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Parent to aggregate.
+     * Filter which parent to aggregate.
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Parents to fetch.
+     * Determine the order of parents to fetch.
      */
-    orderBy?: ParentOrderByWithRelationInput | ParentOrderByWithRelationInput[]
+    orderBy?: parentOrderByWithRelationInput | parentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ParentWhereUniqueInput
+    cursor?: parentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Parents from the position of the cursor.
+     * Take `±n` parents from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Parents.
+     * Skip the first `n` parents.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Parents
+     * Count returned parents
     **/
     _count?: true | ParentCountAggregateInputType
     /**
@@ -2251,11 +2379,11 @@ export namespace Prisma {
 
 
 
-  export type ParentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ParentWhereInput
-    orderBy?: ParentOrderByWithAggregationInput | ParentOrderByWithAggregationInput[]
+  export type parentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: parentWhereInput
+    orderBy?: parentOrderByWithAggregationInput | parentOrderByWithAggregationInput[]
     by: ParentScalarFieldEnum[] | ParentScalarFieldEnum
-    having?: ParentScalarWhereWithAggregatesInput
+    having?: parentScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: ParentCountAggregateInputType | true
@@ -2277,7 +2405,7 @@ export namespace Prisma {
     _max: ParentMaxAggregateOutputType | null
   }
 
-  type GetParentGroupByPayload<T extends ParentGroupByArgs> = Prisma.PrismaPromise<
+  type GetParentGroupByPayload<T extends parentGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<ParentGroupByOutputType, T['by']> &
         {
@@ -2291,52 +2419,52 @@ export namespace Prisma {
     >
 
 
-  export type ParentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type parentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
     babyId?: boolean
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["parent"]>
 
-  export type ParentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type parentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
     babyId?: boolean
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["parent"]>
 
-  export type ParentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type parentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     firstName?: boolean
     lastName?: boolean
     babyId?: boolean
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["parent"]>
 
-  export type ParentSelectScalar = {
+  export type parentSelectScalar = {
     id?: boolean
     firstName?: boolean
     lastName?: boolean
     babyId?: boolean
   }
 
-  export type ParentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "babyId", ExtArgs["result"]["parent"]>
-  export type ParentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+  export type parentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "babyId", ExtArgs["result"]["parent"]>
+  export type parentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }
-  export type ParentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+  export type parentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }
-  export type ParentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    baby?: boolean | BabyDefaultArgs<ExtArgs>
+  export type parentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
   }
 
-  export type $ParentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Parent"
+  export type $parentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "parent"
     objects: {
-      baby: Prisma.$BabyPayload<ExtArgs>
+      baby: Prisma.$babyPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2347,18 +2475,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type ParentGetPayload<S extends boolean | null | undefined | ParentDefaultArgs> = $Result.GetResult<Prisma.$ParentPayload, S>
+  type parentGetPayload<S extends boolean | null | undefined | parentDefaultArgs> = $Result.GetResult<Prisma.$parentPayload, S>
 
-  type ParentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ParentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type parentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<parentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: ParentCountAggregateInputType | true
     }
 
-  export interface ParentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Parent'], meta: { name: 'Parent' } }
+  export interface parentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['parent'], meta: { name: 'parent' } }
     /**
      * Find zero or one Parent that matches the filter.
-     * @param {ParentFindUniqueArgs} args - Arguments to find a Parent
+     * @param {parentFindUniqueArgs} args - Arguments to find a Parent
      * @example
      * // Get one Parent
      * const parent = await prisma.parent.findUnique({
@@ -2367,12 +2495,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends ParentFindUniqueArgs>(args: SelectSubset<T, ParentFindUniqueArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends parentFindUniqueArgs>(args: SelectSubset<T, parentFindUniqueArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one Parent that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ParentFindUniqueOrThrowArgs} args - Arguments to find a Parent
+     * @param {parentFindUniqueOrThrowArgs} args - Arguments to find a Parent
      * @example
      * // Get one Parent
      * const parent = await prisma.parent.findUniqueOrThrow({
@@ -2381,13 +2509,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ParentFindUniqueOrThrowArgs>(args: SelectSubset<T, ParentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends parentFindUniqueOrThrowArgs>(args: SelectSubset<T, parentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Parent that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentFindFirstArgs} args - Arguments to find a Parent
+     * @param {parentFindFirstArgs} args - Arguments to find a Parent
      * @example
      * // Get one Parent
      * const parent = await prisma.parent.findFirst({
@@ -2396,14 +2524,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends ParentFindFirstArgs>(args?: SelectSubset<T, ParentFindFirstArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends parentFindFirstArgs>(args?: SelectSubset<T, parentFindFirstArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first Parent that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentFindFirstOrThrowArgs} args - Arguments to find a Parent
+     * @param {parentFindFirstOrThrowArgs} args - Arguments to find a Parent
      * @example
      * // Get one Parent
      * const parent = await prisma.parent.findFirstOrThrow({
@@ -2412,13 +2540,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends ParentFindFirstOrThrowArgs>(args?: SelectSubset<T, ParentFindFirstOrThrowArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends parentFindFirstOrThrowArgs>(args?: SelectSubset<T, parentFindFirstOrThrowArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Parents that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {parentFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Parents
      * const parents = await prisma.parent.findMany()
@@ -2430,11 +2558,11 @@ export namespace Prisma {
      * const parentWithIdOnly = await prisma.parent.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ParentFindManyArgs>(args?: SelectSubset<T, ParentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends parentFindManyArgs>(args?: SelectSubset<T, parentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a Parent.
-     * @param {ParentCreateArgs} args - Arguments to create a Parent.
+     * @param {parentCreateArgs} args - Arguments to create a Parent.
      * @example
      * // Create one Parent
      * const Parent = await prisma.parent.create({
@@ -2444,11 +2572,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends ParentCreateArgs>(args: SelectSubset<T, ParentCreateArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends parentCreateArgs>(args: SelectSubset<T, parentCreateArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Parents.
-     * @param {ParentCreateManyArgs} args - Arguments to create many Parents.
+     * @param {parentCreateManyArgs} args - Arguments to create many Parents.
      * @example
      * // Create many Parents
      * const parent = await prisma.parent.createMany({
@@ -2458,11 +2586,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends ParentCreateManyArgs>(args?: SelectSubset<T, ParentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends parentCreateManyArgs>(args?: SelectSubset<T, parentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Parents and returns the data saved in the database.
-     * @param {ParentCreateManyAndReturnArgs} args - Arguments to create many Parents.
+     * @param {parentCreateManyAndReturnArgs} args - Arguments to create many Parents.
      * @example
      * // Create many Parents
      * const parent = await prisma.parent.createManyAndReturn({
@@ -2482,11 +2610,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ParentCreateManyAndReturnArgs>(args?: SelectSubset<T, ParentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends parentCreateManyAndReturnArgs>(args?: SelectSubset<T, parentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a Parent.
-     * @param {ParentDeleteArgs} args - Arguments to delete one Parent.
+     * @param {parentDeleteArgs} args - Arguments to delete one Parent.
      * @example
      * // Delete one Parent
      * const Parent = await prisma.parent.delete({
@@ -2496,11 +2624,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends ParentDeleteArgs>(args: SelectSubset<T, ParentDeleteArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends parentDeleteArgs>(args: SelectSubset<T, parentDeleteArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one Parent.
-     * @param {ParentUpdateArgs} args - Arguments to update one Parent.
+     * @param {parentUpdateArgs} args - Arguments to update one Parent.
      * @example
      * // Update one Parent
      * const parent = await prisma.parent.update({
@@ -2513,11 +2641,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ParentUpdateArgs>(args: SelectSubset<T, ParentUpdateArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends parentUpdateArgs>(args: SelectSubset<T, parentUpdateArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Parents.
-     * @param {ParentDeleteManyArgs} args - Arguments to filter Parents to delete.
+     * @param {parentDeleteManyArgs} args - Arguments to filter Parents to delete.
      * @example
      * // Delete a few Parents
      * const { count } = await prisma.parent.deleteMany({
@@ -2527,13 +2655,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends ParentDeleteManyArgs>(args?: SelectSubset<T, ParentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends parentDeleteManyArgs>(args?: SelectSubset<T, parentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Parents.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {parentUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Parents
      * const parent = await prisma.parent.updateMany({
@@ -2546,11 +2674,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ParentUpdateManyArgs>(args: SelectSubset<T, ParentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends parentUpdateManyArgs>(args: SelectSubset<T, parentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Parents and returns the data updated in the database.
-     * @param {ParentUpdateManyAndReturnArgs} args - Arguments to update many Parents.
+     * @param {parentUpdateManyAndReturnArgs} args - Arguments to update many Parents.
      * @example
      * // Update many Parents
      * const parent = await prisma.parent.updateManyAndReturn({
@@ -2576,11 +2704,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ParentUpdateManyAndReturnArgs>(args: SelectSubset<T, ParentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends parentUpdateManyAndReturnArgs>(args: SelectSubset<T, parentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Parent.
-     * @param {ParentUpsertArgs} args - Arguments to update or create a Parent.
+     * @param {parentUpsertArgs} args - Arguments to update or create a Parent.
      * @example
      * // Update or create a Parent
      * const parent = await prisma.parent.upsert({
@@ -2595,14 +2723,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends ParentUpsertArgs>(args: SelectSubset<T, ParentUpsertArgs<ExtArgs>>): Prisma__ParentClient<$Result.GetResult<Prisma.$ParentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends parentUpsertArgs>(args: SelectSubset<T, parentUpsertArgs<ExtArgs>>): Prisma__parentClient<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Parents.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentCountArgs} args - Arguments to filter Parents to count.
+     * @param {parentCountArgs} args - Arguments to filter Parents to count.
      * @example
      * // Count the number of Parents
      * const count = await prisma.parent.count({
@@ -2611,8 +2739,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends ParentCountArgs>(
-      args?: Subset<T, ParentCountArgs>,
+    count<T extends parentCountArgs>(
+      args?: Subset<T, parentCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -2651,7 +2779,7 @@ export namespace Prisma {
      * Group by Parent.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ParentGroupByArgs} args - Group by arguments.
+     * @param {parentGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2666,14 +2794,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ParentGroupByArgs,
+      T extends parentGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ParentGroupByArgs['orderBy'] }
-        : { orderBy?: ParentGroupByArgs['orderBy'] },
+        ? { orderBy: parentGroupByArgs['orderBy'] }
+        : { orderBy?: parentGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2722,22 +2850,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ParentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, parentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetParentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Parent model
+   * Fields of the parent model
    */
-  readonly fields: ParentFieldRefs;
+  readonly fields: parentFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Parent.
+   * The delegate class that acts as a "Promise-like" for parent.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ParentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__parentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    baby<T extends BabyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BabyDefaultArgs<ExtArgs>>): Prisma__BabyClient<$Result.GetResult<Prisma.$BabyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    baby<T extends babyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, babyDefaultArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2764,424 +2892,1507 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Parent model
+   * Fields of the parent model
    */
-  interface ParentFieldRefs {
-    readonly id: FieldRef<"Parent", 'Int'>
-    readonly firstName: FieldRef<"Parent", 'String'>
-    readonly lastName: FieldRef<"Parent", 'String'>
-    readonly babyId: FieldRef<"Parent", 'Int'>
+  interface parentFieldRefs {
+    readonly id: FieldRef<"parent", 'Int'>
+    readonly firstName: FieldRef<"parent", 'String'>
+    readonly lastName: FieldRef<"parent", 'String'>
+    readonly babyId: FieldRef<"parent", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Parent findUnique
+   * parent findUnique
    */
-  export type ParentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter, which Parent to fetch.
+     * Filter, which parent to fetch.
      */
-    where: ParentWhereUniqueInput
+    where: parentWhereUniqueInput
   }
 
   /**
-   * Parent findUniqueOrThrow
+   * parent findUniqueOrThrow
    */
-  export type ParentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter, which Parent to fetch.
+     * Filter, which parent to fetch.
      */
-    where: ParentWhereUniqueInput
+    where: parentWhereUniqueInput
   }
 
   /**
-   * Parent findFirst
+   * parent findFirst
    */
-  export type ParentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter, which Parent to fetch.
+     * Filter, which parent to fetch.
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Parents to fetch.
+     * Determine the order of parents to fetch.
      */
-    orderBy?: ParentOrderByWithRelationInput | ParentOrderByWithRelationInput[]
+    orderBy?: parentOrderByWithRelationInput | parentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Parents.
+     * Sets the position for searching for parents.
      */
-    cursor?: ParentWhereUniqueInput
+    cursor?: parentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Parents from the position of the cursor.
+     * Take `±n` parents from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Parents.
+     * Skip the first `n` parents.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Parents.
+     * Filter by unique combinations of parents.
      */
     distinct?: ParentScalarFieldEnum | ParentScalarFieldEnum[]
   }
 
   /**
-   * Parent findFirstOrThrow
+   * parent findFirstOrThrow
    */
-  export type ParentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter, which Parent to fetch.
+     * Filter, which parent to fetch.
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Parents to fetch.
+     * Determine the order of parents to fetch.
      */
-    orderBy?: ParentOrderByWithRelationInput | ParentOrderByWithRelationInput[]
+    orderBy?: parentOrderByWithRelationInput | parentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Parents.
+     * Sets the position for searching for parents.
      */
-    cursor?: ParentWhereUniqueInput
+    cursor?: parentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Parents from the position of the cursor.
+     * Take `±n` parents from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Parents.
+     * Skip the first `n` parents.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Parents.
+     * Filter by unique combinations of parents.
      */
     distinct?: ParentScalarFieldEnum | ParentScalarFieldEnum[]
   }
 
   /**
-   * Parent findMany
+   * parent findMany
    */
-  export type ParentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter, which Parents to fetch.
+     * Filter, which parents to fetch.
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Parents to fetch.
+     * Determine the order of parents to fetch.
      */
-    orderBy?: ParentOrderByWithRelationInput | ParentOrderByWithRelationInput[]
+    orderBy?: parentOrderByWithRelationInput | parentOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Parents.
+     * Sets the position for listing parents.
      */
-    cursor?: ParentWhereUniqueInput
+    cursor?: parentWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Parents from the position of the cursor.
+     * Take `±n` parents from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Parents.
+     * Skip the first `n` parents.
      */
     skip?: number
     distinct?: ParentScalarFieldEnum | ParentScalarFieldEnum[]
   }
 
   /**
-   * Parent create
+   * parent create
    */
-  export type ParentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * The data needed to create a Parent.
+     * The data needed to create a parent.
      */
-    data: XOR<ParentCreateInput, ParentUncheckedCreateInput>
+    data: XOR<parentCreateInput, parentUncheckedCreateInput>
   }
 
   /**
-   * Parent createMany
+   * parent createMany
    */
-  export type ParentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Parents.
+     * The data used to create many parents.
      */
-    data: ParentCreateManyInput | ParentCreateManyInput[]
+    data: parentCreateManyInput | parentCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Parent createManyAndReturn
+   * parent createManyAndReturn
    */
-  export type ParentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelectCreateManyAndReturn<ExtArgs> | null
+    select?: parentSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
-     * The data used to create many Parents.
+     * The data used to create many parents.
      */
-    data: ParentCreateManyInput | ParentCreateManyInput[]
+    data: parentCreateManyInput | parentCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: parentIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Parent update
+   * parent update
    */
-  export type ParentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * The data needed to update a Parent.
+     * The data needed to update a parent.
      */
-    data: XOR<ParentUpdateInput, ParentUncheckedUpdateInput>
+    data: XOR<parentUpdateInput, parentUncheckedUpdateInput>
     /**
-     * Choose, which Parent to update.
+     * Choose, which parent to update.
      */
-    where: ParentWhereUniqueInput
+    where: parentWhereUniqueInput
   }
 
   /**
-   * Parent updateMany
+   * parent updateMany
    */
-  export type ParentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Parents.
+     * The data used to update parents.
      */
-    data: XOR<ParentUpdateManyMutationInput, ParentUncheckedUpdateManyInput>
+    data: XOR<parentUpdateManyMutationInput, parentUncheckedUpdateManyInput>
     /**
-     * Filter which Parents to update
+     * Filter which parents to update
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
-     * Limit how many Parents to update.
+     * Limit how many parents to update.
      */
     limit?: number
   }
 
   /**
-   * Parent updateManyAndReturn
+   * parent updateManyAndReturn
    */
-  export type ParentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: parentSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
-     * The data used to update Parents.
+     * The data used to update parents.
      */
-    data: XOR<ParentUpdateManyMutationInput, ParentUncheckedUpdateManyInput>
+    data: XOR<parentUpdateManyMutationInput, parentUncheckedUpdateManyInput>
     /**
-     * Filter which Parents to update
+     * Filter which parents to update
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
-     * Limit how many Parents to update.
+     * Limit how many parents to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: parentIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Parent upsert
+   * parent upsert
    */
-  export type ParentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * The filter to search for the Parent to update in case it exists.
+     * The filter to search for the parent to update in case it exists.
      */
-    where: ParentWhereUniqueInput
+    where: parentWhereUniqueInput
     /**
-     * In case the Parent found by the `where` argument doesn't exist, create a new Parent with this data.
+     * In case the parent found by the `where` argument doesn't exist, create a new parent with this data.
      */
-    create: XOR<ParentCreateInput, ParentUncheckedCreateInput>
+    create: XOR<parentCreateInput, parentUncheckedCreateInput>
     /**
-     * In case the Parent was found with the provided `where` argument, update it with this data.
+     * In case the parent was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ParentUpdateInput, ParentUncheckedUpdateInput>
+    update: XOR<parentUpdateInput, parentUncheckedUpdateInput>
   }
 
   /**
-   * Parent delete
+   * parent delete
    */
-  export type ParentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
     /**
-     * Filter which Parent to delete.
+     * Filter which parent to delete.
      */
-    where: ParentWhereUniqueInput
+    where: parentWhereUniqueInput
   }
 
   /**
-   * Parent deleteMany
+   * parent deleteMany
    */
-  export type ParentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Parents to delete
+     * Filter which parents to delete
      */
-    where?: ParentWhereInput
+    where?: parentWhereInput
     /**
-     * Limit how many Parents to delete.
+     * Limit how many parents to delete.
      */
     limit?: number
   }
 
   /**
-   * Parent without action
+   * parent without action
    */
-  export type ParentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type parentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Parent
+     * Select specific fields to fetch from the parent
      */
-    select?: ParentSelect<ExtArgs> | null
+    select?: parentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Parent
+     * Omit specific fields from the parent
      */
-    omit?: ParentOmit<ExtArgs> | null
+    omit?: parentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ParentInclude<ExtArgs> | null
+    include?: parentInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model meal
+   */
+
+  export type AggregateMeal = {
+    _count: MealCountAggregateOutputType | null
+    _avg: MealAvgAggregateOutputType | null
+    _sum: MealSumAggregateOutputType | null
+    _min: MealMinAggregateOutputType | null
+    _max: MealMaxAggregateOutputType | null
+  }
+
+  export type MealAvgAggregateOutputType = {
+    id: number | null
+    babyId: number | null
+  }
+
+  export type MealSumAggregateOutputType = {
+    id: number | null
+    babyId: number | null
+  }
+
+  export type MealMinAggregateOutputType = {
+    id: number | null
+    meal: string | null
+    mealQnt: string | null
+    babyId: number | null
+  }
+
+  export type MealMaxAggregateOutputType = {
+    id: number | null
+    meal: string | null
+    mealQnt: string | null
+    babyId: number | null
+  }
+
+  export type MealCountAggregateOutputType = {
+    id: number
+    meal: number
+    mealQnt: number
+    babyId: number
+    _all: number
+  }
+
+
+  export type MealAvgAggregateInputType = {
+    id?: true
+    babyId?: true
+  }
+
+  export type MealSumAggregateInputType = {
+    id?: true
+    babyId?: true
+  }
+
+  export type MealMinAggregateInputType = {
+    id?: true
+    meal?: true
+    mealQnt?: true
+    babyId?: true
+  }
+
+  export type MealMaxAggregateInputType = {
+    id?: true
+    meal?: true
+    mealQnt?: true
+    babyId?: true
+  }
+
+  export type MealCountAggregateInputType = {
+    id?: true
+    meal?: true
+    mealQnt?: true
+    babyId?: true
+    _all?: true
+  }
+
+  export type MealAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which meal to aggregate.
+     */
+    where?: mealWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of meals to fetch.
+     */
+    orderBy?: mealOrderByWithRelationInput | mealOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: mealWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` meals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` meals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned meals
+    **/
+    _count?: true | MealCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MealAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MealSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MealMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MealMaxAggregateInputType
+  }
+
+  export type GetMealAggregateType<T extends MealAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeal]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMeal[P]>
+      : GetScalarType<T[P], AggregateMeal[P]>
+  }
+
+
+
+
+  export type mealGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mealWhereInput
+    orderBy?: mealOrderByWithAggregationInput | mealOrderByWithAggregationInput[]
+    by: MealScalarFieldEnum[] | MealScalarFieldEnum
+    having?: mealScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MealCountAggregateInputType | true
+    _avg?: MealAvgAggregateInputType
+    _sum?: MealSumAggregateInputType
+    _min?: MealMinAggregateInputType
+    _max?: MealMaxAggregateInputType
+  }
+
+  export type MealGroupByOutputType = {
+    id: number
+    meal: string
+    mealQnt: string
+    babyId: number
+    _count: MealCountAggregateOutputType | null
+    _avg: MealAvgAggregateOutputType | null
+    _sum: MealSumAggregateOutputType | null
+    _min: MealMinAggregateOutputType | null
+    _max: MealMaxAggregateOutputType | null
+  }
+
+  type GetMealGroupByPayload<T extends mealGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MealGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MealGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MealGroupByOutputType[P]>
+            : GetScalarType<T[P], MealGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type mealSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meal?: boolean
+    mealQnt?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meal"]>
+
+  export type mealSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meal?: boolean
+    mealQnt?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meal"]>
+
+  export type mealSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    meal?: boolean
+    mealQnt?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meal"]>
+
+  export type mealSelectScalar = {
+    id?: boolean
+    meal?: boolean
+    mealQnt?: boolean
+    babyId?: boolean
+  }
+
+  export type mealOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meal" | "mealQnt" | "babyId", ExtArgs["result"]["meal"]>
+  export type mealInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+  export type mealIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+  export type mealIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+
+  export type $mealPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "meal"
+    objects: {
+      baby: Prisma.$babyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      meal: string
+      mealQnt: string
+      babyId: number
+    }, ExtArgs["result"]["meal"]>
+    composites: {}
+  }
+
+  type mealGetPayload<S extends boolean | null | undefined | mealDefaultArgs> = $Result.GetResult<Prisma.$mealPayload, S>
+
+  type mealCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<mealFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MealCountAggregateInputType | true
+    }
+
+  export interface mealDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['meal'], meta: { name: 'meal' } }
+    /**
+     * Find zero or one Meal that matches the filter.
+     * @param {mealFindUniqueArgs} args - Arguments to find a Meal
+     * @example
+     * // Get one Meal
+     * const meal = await prisma.meal.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends mealFindUniqueArgs>(args: SelectSubset<T, mealFindUniqueArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Meal that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {mealFindUniqueOrThrowArgs} args - Arguments to find a Meal
+     * @example
+     * // Get one Meal
+     * const meal = await prisma.meal.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends mealFindUniqueOrThrowArgs>(args: SelectSubset<T, mealFindUniqueOrThrowArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Meal that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealFindFirstArgs} args - Arguments to find a Meal
+     * @example
+     * // Get one Meal
+     * const meal = await prisma.meal.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends mealFindFirstArgs>(args?: SelectSubset<T, mealFindFirstArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Meal that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealFindFirstOrThrowArgs} args - Arguments to find a Meal
+     * @example
+     * // Get one Meal
+     * const meal = await prisma.meal.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends mealFindFirstOrThrowArgs>(args?: SelectSubset<T, mealFindFirstOrThrowArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Meals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Meals
+     * const meals = await prisma.meal.findMany()
+     * 
+     * // Get first 10 Meals
+     * const meals = await prisma.meal.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mealWithIdOnly = await prisma.meal.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends mealFindManyArgs>(args?: SelectSubset<T, mealFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Meal.
+     * @param {mealCreateArgs} args - Arguments to create a Meal.
+     * @example
+     * // Create one Meal
+     * const Meal = await prisma.meal.create({
+     *   data: {
+     *     // ... data to create a Meal
+     *   }
+     * })
+     * 
+     */
+    create<T extends mealCreateArgs>(args: SelectSubset<T, mealCreateArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Meals.
+     * @param {mealCreateManyArgs} args - Arguments to create many Meals.
+     * @example
+     * // Create many Meals
+     * const meal = await prisma.meal.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends mealCreateManyArgs>(args?: SelectSubset<T, mealCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Meals and returns the data saved in the database.
+     * @param {mealCreateManyAndReturnArgs} args - Arguments to create many Meals.
+     * @example
+     * // Create many Meals
+     * const meal = await prisma.meal.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Meals and only return the `id`
+     * const mealWithIdOnly = await prisma.meal.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends mealCreateManyAndReturnArgs>(args?: SelectSubset<T, mealCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Meal.
+     * @param {mealDeleteArgs} args - Arguments to delete one Meal.
+     * @example
+     * // Delete one Meal
+     * const Meal = await prisma.meal.delete({
+     *   where: {
+     *     // ... filter to delete one Meal
+     *   }
+     * })
+     * 
+     */
+    delete<T extends mealDeleteArgs>(args: SelectSubset<T, mealDeleteArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Meal.
+     * @param {mealUpdateArgs} args - Arguments to update one Meal.
+     * @example
+     * // Update one Meal
+     * const meal = await prisma.meal.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends mealUpdateArgs>(args: SelectSubset<T, mealUpdateArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Meals.
+     * @param {mealDeleteManyArgs} args - Arguments to filter Meals to delete.
+     * @example
+     * // Delete a few Meals
+     * const { count } = await prisma.meal.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends mealDeleteManyArgs>(args?: SelectSubset<T, mealDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Meals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Meals
+     * const meal = await prisma.meal.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends mealUpdateManyArgs>(args: SelectSubset<T, mealUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Meals and returns the data updated in the database.
+     * @param {mealUpdateManyAndReturnArgs} args - Arguments to update many Meals.
+     * @example
+     * // Update many Meals
+     * const meal = await prisma.meal.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Meals and only return the `id`
+     * const mealWithIdOnly = await prisma.meal.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends mealUpdateManyAndReturnArgs>(args: SelectSubset<T, mealUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Meal.
+     * @param {mealUpsertArgs} args - Arguments to update or create a Meal.
+     * @example
+     * // Update or create a Meal
+     * const meal = await prisma.meal.upsert({
+     *   create: {
+     *     // ... data to create a Meal
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Meal we want to update
+     *   }
+     * })
+     */
+    upsert<T extends mealUpsertArgs>(args: SelectSubset<T, mealUpsertArgs<ExtArgs>>): Prisma__mealClient<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Meals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealCountArgs} args - Arguments to filter Meals to count.
+     * @example
+     * // Count the number of Meals
+     * const count = await prisma.meal.count({
+     *   where: {
+     *     // ... the filter for the Meals we want to count
+     *   }
+     * })
+    **/
+    count<T extends mealCountArgs>(
+      args?: Subset<T, mealCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MealCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Meal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MealAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MealAggregateArgs>(args: Subset<T, MealAggregateArgs>): Prisma.PrismaPromise<GetMealAggregateType<T>>
+
+    /**
+     * Group by Meal.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mealGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends mealGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: mealGroupByArgs['orderBy'] }
+        : { orderBy?: mealGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, mealGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMealGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the meal model
+   */
+  readonly fields: mealFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for meal.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__mealClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    baby<T extends babyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, babyDefaultArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the meal model
+   */
+  interface mealFieldRefs {
+    readonly id: FieldRef<"meal", 'Int'>
+    readonly meal: FieldRef<"meal", 'String'>
+    readonly mealQnt: FieldRef<"meal", 'String'>
+    readonly babyId: FieldRef<"meal", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * meal findUnique
+   */
+  export type mealFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter, which meal to fetch.
+     */
+    where: mealWhereUniqueInput
+  }
+
+  /**
+   * meal findUniqueOrThrow
+   */
+  export type mealFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter, which meal to fetch.
+     */
+    where: mealWhereUniqueInput
+  }
+
+  /**
+   * meal findFirst
+   */
+  export type mealFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter, which meal to fetch.
+     */
+    where?: mealWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of meals to fetch.
+     */
+    orderBy?: mealOrderByWithRelationInput | mealOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for meals.
+     */
+    cursor?: mealWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` meals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` meals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of meals.
+     */
+    distinct?: MealScalarFieldEnum | MealScalarFieldEnum[]
+  }
+
+  /**
+   * meal findFirstOrThrow
+   */
+  export type mealFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter, which meal to fetch.
+     */
+    where?: mealWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of meals to fetch.
+     */
+    orderBy?: mealOrderByWithRelationInput | mealOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for meals.
+     */
+    cursor?: mealWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` meals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` meals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of meals.
+     */
+    distinct?: MealScalarFieldEnum | MealScalarFieldEnum[]
+  }
+
+  /**
+   * meal findMany
+   */
+  export type mealFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter, which meals to fetch.
+     */
+    where?: mealWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of meals to fetch.
+     */
+    orderBy?: mealOrderByWithRelationInput | mealOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing meals.
+     */
+    cursor?: mealWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` meals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` meals.
+     */
+    skip?: number
+    distinct?: MealScalarFieldEnum | MealScalarFieldEnum[]
+  }
+
+  /**
+   * meal create
+   */
+  export type mealCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * The data needed to create a meal.
+     */
+    data: XOR<mealCreateInput, mealUncheckedCreateInput>
+  }
+
+  /**
+   * meal createMany
+   */
+  export type mealCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many meals.
+     */
+    data: mealCreateManyInput | mealCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * meal createManyAndReturn
+   */
+  export type mealCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * The data used to create many meals.
+     */
+    data: mealCreateManyInput | mealCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * meal update
+   */
+  export type mealUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * The data needed to update a meal.
+     */
+    data: XOR<mealUpdateInput, mealUncheckedUpdateInput>
+    /**
+     * Choose, which meal to update.
+     */
+    where: mealWhereUniqueInput
+  }
+
+  /**
+   * meal updateMany
+   */
+  export type mealUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update meals.
+     */
+    data: XOR<mealUpdateManyMutationInput, mealUncheckedUpdateManyInput>
+    /**
+     * Filter which meals to update
+     */
+    where?: mealWhereInput
+    /**
+     * Limit how many meals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * meal updateManyAndReturn
+   */
+  export type mealUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * The data used to update meals.
+     */
+    data: XOR<mealUpdateManyMutationInput, mealUncheckedUpdateManyInput>
+    /**
+     * Filter which meals to update
+     */
+    where?: mealWhereInput
+    /**
+     * Limit how many meals to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * meal upsert
+   */
+  export type mealUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * The filter to search for the meal to update in case it exists.
+     */
+    where: mealWhereUniqueInput
+    /**
+     * In case the meal found by the `where` argument doesn't exist, create a new meal with this data.
+     */
+    create: XOR<mealCreateInput, mealUncheckedCreateInput>
+    /**
+     * In case the meal was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<mealUpdateInput, mealUncheckedUpdateInput>
+  }
+
+  /**
+   * meal delete
+   */
+  export type mealDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
+    /**
+     * Filter which meal to delete.
+     */
+    where: mealWhereUniqueInput
+  }
+
+  /**
+   * meal deleteMany
+   */
+  export type mealDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which meals to delete
+     */
+    where?: mealWhereInput
+    /**
+     * Limit how many meals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * meal without action
+   */
+  export type mealDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the meal
+     */
+    select?: mealSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the meal
+     */
+    omit?: mealOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mealInclude<ExtArgs> | null
   }
 
 
@@ -3218,6 +4429,16 @@ export namespace Prisma {
   };
 
   export type ParentScalarFieldEnum = (typeof ParentScalarFieldEnum)[keyof typeof ParentScalarFieldEnum]
+
+
+  export const MealScalarFieldEnum: {
+    id: 'id',
+    meal: 'meal',
+    mealQnt: 'mealQnt',
+    babyId: 'babyId'
+  };
+
+  export type MealScalarFieldEnum = (typeof MealScalarFieldEnum)[keyof typeof MealScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3286,150 +4507,209 @@ export namespace Prisma {
    */
 
 
-  export type BabyWhereInput = {
-    AND?: BabyWhereInput | BabyWhereInput[]
-    OR?: BabyWhereInput[]
-    NOT?: BabyWhereInput | BabyWhereInput[]
-    id?: IntFilter<"Baby"> | number
-    firstName?: StringFilter<"Baby"> | string
-    lastName?: StringFilter<"Baby"> | string
-    height?: IntFilter<"Baby"> | number
-    weight?: IntFilter<"Baby"> | number
+  export type babyWhereInput = {
+    AND?: babyWhereInput | babyWhereInput[]
+    OR?: babyWhereInput[]
+    NOT?: babyWhereInput | babyWhereInput[]
+    id?: IntFilter<"baby"> | number
+    firstName?: StringFilter<"baby"> | string
+    lastName?: StringFilter<"baby"> | string
+    height?: IntFilter<"baby"> | number
+    weight?: IntFilter<"baby"> | number
     parents?: ParentListRelationFilter
+    meal?: MealListRelationFilter
   }
 
-  export type BabyOrderByWithRelationInput = {
+  export type babyOrderByWithRelationInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
     weight?: SortOrder
-    parents?: ParentOrderByRelationAggregateInput
+    parents?: parentOrderByRelationAggregateInput
+    meal?: mealOrderByRelationAggregateInput
   }
 
-  export type BabyWhereUniqueInput = Prisma.AtLeast<{
+  export type babyWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: BabyWhereInput | BabyWhereInput[]
-    OR?: BabyWhereInput[]
-    NOT?: BabyWhereInput | BabyWhereInput[]
-    firstName?: StringFilter<"Baby"> | string
-    lastName?: StringFilter<"Baby"> | string
-    height?: IntFilter<"Baby"> | number
-    weight?: IntFilter<"Baby"> | number
+    AND?: babyWhereInput | babyWhereInput[]
+    OR?: babyWhereInput[]
+    NOT?: babyWhereInput | babyWhereInput[]
+    firstName?: StringFilter<"baby"> | string
+    lastName?: StringFilter<"baby"> | string
+    height?: IntFilter<"baby"> | number
+    weight?: IntFilter<"baby"> | number
     parents?: ParentListRelationFilter
+    meal?: MealListRelationFilter
   }, "id">
 
-  export type BabyOrderByWithAggregationInput = {
+  export type babyOrderByWithAggregationInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
     weight?: SortOrder
-    _count?: BabyCountOrderByAggregateInput
-    _avg?: BabyAvgOrderByAggregateInput
-    _max?: BabyMaxOrderByAggregateInput
-    _min?: BabyMinOrderByAggregateInput
-    _sum?: BabySumOrderByAggregateInput
+    _count?: babyCountOrderByAggregateInput
+    _avg?: babyAvgOrderByAggregateInput
+    _max?: babyMaxOrderByAggregateInput
+    _min?: babyMinOrderByAggregateInput
+    _sum?: babySumOrderByAggregateInput
   }
 
-  export type BabyScalarWhereWithAggregatesInput = {
-    AND?: BabyScalarWhereWithAggregatesInput | BabyScalarWhereWithAggregatesInput[]
-    OR?: BabyScalarWhereWithAggregatesInput[]
-    NOT?: BabyScalarWhereWithAggregatesInput | BabyScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Baby"> | number
-    firstName?: StringWithAggregatesFilter<"Baby"> | string
-    lastName?: StringWithAggregatesFilter<"Baby"> | string
-    height?: IntWithAggregatesFilter<"Baby"> | number
-    weight?: IntWithAggregatesFilter<"Baby"> | number
+  export type babyScalarWhereWithAggregatesInput = {
+    AND?: babyScalarWhereWithAggregatesInput | babyScalarWhereWithAggregatesInput[]
+    OR?: babyScalarWhereWithAggregatesInput[]
+    NOT?: babyScalarWhereWithAggregatesInput | babyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"baby"> | number
+    firstName?: StringWithAggregatesFilter<"baby"> | string
+    lastName?: StringWithAggregatesFilter<"baby"> | string
+    height?: IntWithAggregatesFilter<"baby"> | number
+    weight?: IntWithAggregatesFilter<"baby"> | number
   }
 
-  export type ParentWhereInput = {
-    AND?: ParentWhereInput | ParentWhereInput[]
-    OR?: ParentWhereInput[]
-    NOT?: ParentWhereInput | ParentWhereInput[]
-    id?: IntFilter<"Parent"> | number
-    firstName?: StringFilter<"Parent"> | string
-    lastName?: StringFilter<"Parent"> | string
-    babyId?: IntFilter<"Parent"> | number
-    baby?: XOR<BabyScalarRelationFilter, BabyWhereInput>
+  export type parentWhereInput = {
+    AND?: parentWhereInput | parentWhereInput[]
+    OR?: parentWhereInput[]
+    NOT?: parentWhereInput | parentWhereInput[]
+    id?: IntFilter<"parent"> | number
+    firstName?: StringFilter<"parent"> | string
+    lastName?: StringFilter<"parent"> | string
+    babyId?: IntFilter<"parent"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }
 
-  export type ParentOrderByWithRelationInput = {
+  export type parentOrderByWithRelationInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     babyId?: SortOrder
-    baby?: BabyOrderByWithRelationInput
+    baby?: babyOrderByWithRelationInput
   }
 
-  export type ParentWhereUniqueInput = Prisma.AtLeast<{
+  export type parentWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ParentWhereInput | ParentWhereInput[]
-    OR?: ParentWhereInput[]
-    NOT?: ParentWhereInput | ParentWhereInput[]
-    firstName?: StringFilter<"Parent"> | string
-    lastName?: StringFilter<"Parent"> | string
-    babyId?: IntFilter<"Parent"> | number
-    baby?: XOR<BabyScalarRelationFilter, BabyWhereInput>
+    AND?: parentWhereInput | parentWhereInput[]
+    OR?: parentWhereInput[]
+    NOT?: parentWhereInput | parentWhereInput[]
+    firstName?: StringFilter<"parent"> | string
+    lastName?: StringFilter<"parent"> | string
+    babyId?: IntFilter<"parent"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }, "id">
 
-  export type ParentOrderByWithAggregationInput = {
+  export type parentOrderByWithAggregationInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     babyId?: SortOrder
-    _count?: ParentCountOrderByAggregateInput
-    _avg?: ParentAvgOrderByAggregateInput
-    _max?: ParentMaxOrderByAggregateInput
-    _min?: ParentMinOrderByAggregateInput
-    _sum?: ParentSumOrderByAggregateInput
+    _count?: parentCountOrderByAggregateInput
+    _avg?: parentAvgOrderByAggregateInput
+    _max?: parentMaxOrderByAggregateInput
+    _min?: parentMinOrderByAggregateInput
+    _sum?: parentSumOrderByAggregateInput
   }
 
-  export type ParentScalarWhereWithAggregatesInput = {
-    AND?: ParentScalarWhereWithAggregatesInput | ParentScalarWhereWithAggregatesInput[]
-    OR?: ParentScalarWhereWithAggregatesInput[]
-    NOT?: ParentScalarWhereWithAggregatesInput | ParentScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Parent"> | number
-    firstName?: StringWithAggregatesFilter<"Parent"> | string
-    lastName?: StringWithAggregatesFilter<"Parent"> | string
-    babyId?: IntWithAggregatesFilter<"Parent"> | number
+  export type parentScalarWhereWithAggregatesInput = {
+    AND?: parentScalarWhereWithAggregatesInput | parentScalarWhereWithAggregatesInput[]
+    OR?: parentScalarWhereWithAggregatesInput[]
+    NOT?: parentScalarWhereWithAggregatesInput | parentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"parent"> | number
+    firstName?: StringWithAggregatesFilter<"parent"> | string
+    lastName?: StringWithAggregatesFilter<"parent"> | string
+    babyId?: IntWithAggregatesFilter<"parent"> | number
   }
 
-  export type BabyCreateInput = {
+  export type mealWhereInput = {
+    AND?: mealWhereInput | mealWhereInput[]
+    OR?: mealWhereInput[]
+    NOT?: mealWhereInput | mealWhereInput[]
+    id?: IntFilter<"meal"> | number
+    meal?: StringFilter<"meal"> | string
+    mealQnt?: StringFilter<"meal"> | string
+    babyId?: IntFilter<"meal"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
+  }
+
+  export type mealOrderByWithRelationInput = {
+    id?: SortOrder
+    meal?: SortOrder
+    mealQnt?: SortOrder
+    babyId?: SortOrder
+    baby?: babyOrderByWithRelationInput
+  }
+
+  export type mealWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: mealWhereInput | mealWhereInput[]
+    OR?: mealWhereInput[]
+    NOT?: mealWhereInput | mealWhereInput[]
+    meal?: StringFilter<"meal"> | string
+    mealQnt?: StringFilter<"meal"> | string
+    babyId?: IntFilter<"meal"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
+  }, "id">
+
+  export type mealOrderByWithAggregationInput = {
+    id?: SortOrder
+    meal?: SortOrder
+    mealQnt?: SortOrder
+    babyId?: SortOrder
+    _count?: mealCountOrderByAggregateInput
+    _avg?: mealAvgOrderByAggregateInput
+    _max?: mealMaxOrderByAggregateInput
+    _min?: mealMinOrderByAggregateInput
+    _sum?: mealSumOrderByAggregateInput
+  }
+
+  export type mealScalarWhereWithAggregatesInput = {
+    AND?: mealScalarWhereWithAggregatesInput | mealScalarWhereWithAggregatesInput[]
+    OR?: mealScalarWhereWithAggregatesInput[]
+    NOT?: mealScalarWhereWithAggregatesInput | mealScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"meal"> | number
+    meal?: StringWithAggregatesFilter<"meal"> | string
+    mealQnt?: StringWithAggregatesFilter<"meal"> | string
+    babyId?: IntWithAggregatesFilter<"meal"> | number
+  }
+
+  export type babyCreateInput = {
     firstName: string
     lastName: string
     height: number
     weight: number
-    parents?: ParentCreateNestedManyWithoutBabyInput
+    parents?: parentCreateNestedManyWithoutBabyInput
+    meal?: mealCreateNestedManyWithoutBabyInput
   }
 
-  export type BabyUncheckedCreateInput = {
+  export type babyUncheckedCreateInput = {
     id?: number
     firstName: string
     lastName: string
     height: number
     weight: number
-    parents?: ParentUncheckedCreateNestedManyWithoutBabyInput
+    parents?: parentUncheckedCreateNestedManyWithoutBabyInput
+    meal?: mealUncheckedCreateNestedManyWithoutBabyInput
   }
 
-  export type BabyUpdateInput = {
+  export type babyUpdateInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
     weight?: IntFieldUpdateOperationsInput | number
-    parents?: ParentUpdateManyWithoutBabyNestedInput
+    parents?: parentUpdateManyWithoutBabyNestedInput
+    meal?: mealUpdateManyWithoutBabyNestedInput
   }
 
-  export type BabyUncheckedUpdateInput = {
+  export type babyUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
     weight?: IntFieldUpdateOperationsInput | number
-    parents?: ParentUncheckedUpdateManyWithoutBabyNestedInput
+    parents?: parentUncheckedUpdateManyWithoutBabyNestedInput
+    meal?: mealUncheckedUpdateManyWithoutBabyNestedInput
   }
 
-  export type BabyCreateManyInput = {
+  export type babyCreateManyInput = {
     id?: number
     firstName: string
     lastName: string
@@ -3437,14 +4717,14 @@ export namespace Prisma {
     weight: number
   }
 
-  export type BabyUpdateManyMutationInput = {
+  export type babyUpdateManyMutationInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
     weight?: IntFieldUpdateOperationsInput | number
   }
 
-  export type BabyUncheckedUpdateManyInput = {
+  export type babyUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
@@ -3452,48 +4732,93 @@ export namespace Prisma {
     weight?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ParentCreateInput = {
+  export type parentCreateInput = {
     firstName: string
     lastName: string
-    baby: BabyCreateNestedOneWithoutParentsInput
+    baby: babyCreateNestedOneWithoutParentsInput
   }
 
-  export type ParentUncheckedCreateInput = {
+  export type parentUncheckedCreateInput = {
     id?: number
     firstName: string
     lastName: string
     babyId: number
   }
 
-  export type ParentUpdateInput = {
+  export type parentUpdateInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    baby?: BabyUpdateOneRequiredWithoutParentsNestedInput
+    baby?: babyUpdateOneRequiredWithoutParentsNestedInput
   }
 
-  export type ParentUncheckedUpdateInput = {
+  export type parentUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type ParentCreateManyInput = {
+  export type parentCreateManyInput = {
     id?: number
     firstName: string
     lastName: string
     babyId: number
   }
 
-  export type ParentUpdateManyMutationInput = {
+  export type parentUpdateManyMutationInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ParentUncheckedUpdateManyInput = {
+  export type parentUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
+    babyId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mealCreateInput = {
+    meal: string
+    mealQnt: string
+    baby: babyCreateNestedOneWithoutMealInput
+  }
+
+  export type mealUncheckedCreateInput = {
+    id?: number
+    meal: string
+    mealQnt: string
+    babyId: number
+  }
+
+  export type mealUpdateInput = {
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
+    baby?: babyUpdateOneRequiredWithoutMealNestedInput
+  }
+
+  export type mealUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
+    babyId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type mealCreateManyInput = {
+    id?: number
+    meal: string
+    mealQnt: string
+    babyId: number
+  }
+
+  export type mealUpdateManyMutationInput = {
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mealUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -3524,16 +4849,26 @@ export namespace Prisma {
   }
 
   export type ParentListRelationFilter = {
-    every?: ParentWhereInput
-    some?: ParentWhereInput
-    none?: ParentWhereInput
+    every?: parentWhereInput
+    some?: parentWhereInput
+    none?: parentWhereInput
   }
 
-  export type ParentOrderByRelationAggregateInput = {
+  export type MealListRelationFilter = {
+    every?: mealWhereInput
+    some?: mealWhereInput
+    none?: mealWhereInput
+  }
+
+  export type parentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type BabyCountOrderByAggregateInput = {
+  export type mealOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type babyCountOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -3541,21 +4876,13 @@ export namespace Prisma {
     weight?: SortOrder
   }
 
-  export type BabyAvgOrderByAggregateInput = {
+  export type babyAvgOrderByAggregateInput = {
     id?: SortOrder
     height?: SortOrder
     weight?: SortOrder
   }
 
-  export type BabyMaxOrderByAggregateInput = {
-    id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
-    height?: SortOrder
-    weight?: SortOrder
-  }
-
-  export type BabyMinOrderByAggregateInput = {
+  export type babyMaxOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
@@ -3563,7 +4890,15 @@ export namespace Prisma {
     weight?: SortOrder
   }
 
-  export type BabySumOrderByAggregateInput = {
+  export type babyMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    height?: SortOrder
+    weight?: SortOrder
+  }
+
+  export type babySumOrderByAggregateInput = {
     id?: SortOrder
     height?: SortOrder
     weight?: SortOrder
@@ -3604,53 +4939,98 @@ export namespace Prisma {
   }
 
   export type BabyScalarRelationFilter = {
-    is?: BabyWhereInput
-    isNot?: BabyWhereInput
+    is?: babyWhereInput
+    isNot?: babyWhereInput
   }
 
-  export type ParentCountOrderByAggregateInput = {
+  export type parentCountOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     babyId?: SortOrder
   }
 
-  export type ParentAvgOrderByAggregateInput = {
+  export type parentAvgOrderByAggregateInput = {
     id?: SortOrder
     babyId?: SortOrder
   }
 
-  export type ParentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
-    babyId?: SortOrder
-  }
-
-  export type ParentMinOrderByAggregateInput = {
+  export type parentMaxOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     babyId?: SortOrder
   }
 
-  export type ParentSumOrderByAggregateInput = {
+  export type parentMinOrderByAggregateInput = {
+    id?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type parentSumOrderByAggregateInput = {
     id?: SortOrder
     babyId?: SortOrder
   }
 
-  export type ParentCreateNestedManyWithoutBabyInput = {
-    create?: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput> | ParentCreateWithoutBabyInput[] | ParentUncheckedCreateWithoutBabyInput[]
-    connectOrCreate?: ParentCreateOrConnectWithoutBabyInput | ParentCreateOrConnectWithoutBabyInput[]
-    createMany?: ParentCreateManyBabyInputEnvelope
-    connect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
+  export type mealCountOrderByAggregateInput = {
+    id?: SortOrder
+    meal?: SortOrder
+    mealQnt?: SortOrder
+    babyId?: SortOrder
   }
 
-  export type ParentUncheckedCreateNestedManyWithoutBabyInput = {
-    create?: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput> | ParentCreateWithoutBabyInput[] | ParentUncheckedCreateWithoutBabyInput[]
-    connectOrCreate?: ParentCreateOrConnectWithoutBabyInput | ParentCreateOrConnectWithoutBabyInput[]
-    createMany?: ParentCreateManyBabyInputEnvelope
-    connect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
+  export type mealAvgOrderByAggregateInput = {
+    id?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type mealMaxOrderByAggregateInput = {
+    id?: SortOrder
+    meal?: SortOrder
+    mealQnt?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type mealMinOrderByAggregateInput = {
+    id?: SortOrder
+    meal?: SortOrder
+    mealQnt?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type mealSumOrderByAggregateInput = {
+    id?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type parentCreateNestedManyWithoutBabyInput = {
+    create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
+    createMany?: parentCreateManyBabyInputEnvelope
+    connect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+  }
+
+  export type mealCreateNestedManyWithoutBabyInput = {
+    create?: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput> | mealCreateWithoutBabyInput[] | mealUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: mealCreateOrConnectWithoutBabyInput | mealCreateOrConnectWithoutBabyInput[]
+    createMany?: mealCreateManyBabyInputEnvelope
+    connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
+  }
+
+  export type parentUncheckedCreateNestedManyWithoutBabyInput = {
+    create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
+    createMany?: parentCreateManyBabyInputEnvelope
+    connect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+  }
+
+  export type mealUncheckedCreateNestedManyWithoutBabyInput = {
+    create?: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput> | mealCreateWithoutBabyInput[] | mealUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: mealCreateOrConnectWithoutBabyInput | mealCreateOrConnectWithoutBabyInput[]
+    createMany?: mealCreateManyBabyInputEnvelope
+    connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -3665,46 +5045,88 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ParentUpdateManyWithoutBabyNestedInput = {
-    create?: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput> | ParentCreateWithoutBabyInput[] | ParentUncheckedCreateWithoutBabyInput[]
-    connectOrCreate?: ParentCreateOrConnectWithoutBabyInput | ParentCreateOrConnectWithoutBabyInput[]
-    upsert?: ParentUpsertWithWhereUniqueWithoutBabyInput | ParentUpsertWithWhereUniqueWithoutBabyInput[]
-    createMany?: ParentCreateManyBabyInputEnvelope
-    set?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    disconnect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    delete?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    connect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    update?: ParentUpdateWithWhereUniqueWithoutBabyInput | ParentUpdateWithWhereUniqueWithoutBabyInput[]
-    updateMany?: ParentUpdateManyWithWhereWithoutBabyInput | ParentUpdateManyWithWhereWithoutBabyInput[]
-    deleteMany?: ParentScalarWhereInput | ParentScalarWhereInput[]
+  export type parentUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
+    upsert?: parentUpsertWithWhereUniqueWithoutBabyInput | parentUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: parentCreateManyBabyInputEnvelope
+    set?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    disconnect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    delete?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    connect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    update?: parentUpdateWithWhereUniqueWithoutBabyInput | parentUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: parentUpdateManyWithWhereWithoutBabyInput | parentUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: parentScalarWhereInput | parentScalarWhereInput[]
   }
 
-  export type ParentUncheckedUpdateManyWithoutBabyNestedInput = {
-    create?: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput> | ParentCreateWithoutBabyInput[] | ParentUncheckedCreateWithoutBabyInput[]
-    connectOrCreate?: ParentCreateOrConnectWithoutBabyInput | ParentCreateOrConnectWithoutBabyInput[]
-    upsert?: ParentUpsertWithWhereUniqueWithoutBabyInput | ParentUpsertWithWhereUniqueWithoutBabyInput[]
-    createMany?: ParentCreateManyBabyInputEnvelope
-    set?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    disconnect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    delete?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    connect?: ParentWhereUniqueInput | ParentWhereUniqueInput[]
-    update?: ParentUpdateWithWhereUniqueWithoutBabyInput | ParentUpdateWithWhereUniqueWithoutBabyInput[]
-    updateMany?: ParentUpdateManyWithWhereWithoutBabyInput | ParentUpdateManyWithWhereWithoutBabyInput[]
-    deleteMany?: ParentScalarWhereInput | ParentScalarWhereInput[]
+  export type mealUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput> | mealCreateWithoutBabyInput[] | mealUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: mealCreateOrConnectWithoutBabyInput | mealCreateOrConnectWithoutBabyInput[]
+    upsert?: mealUpsertWithWhereUniqueWithoutBabyInput | mealUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: mealCreateManyBabyInputEnvelope
+    set?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    disconnect?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    delete?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    update?: mealUpdateWithWhereUniqueWithoutBabyInput | mealUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: mealUpdateManyWithWhereWithoutBabyInput | mealUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: mealScalarWhereInput | mealScalarWhereInput[]
   }
 
-  export type BabyCreateNestedOneWithoutParentsInput = {
-    create?: XOR<BabyCreateWithoutParentsInput, BabyUncheckedCreateWithoutParentsInput>
-    connectOrCreate?: BabyCreateOrConnectWithoutParentsInput
-    connect?: BabyWhereUniqueInput
+  export type parentUncheckedUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
+    upsert?: parentUpsertWithWhereUniqueWithoutBabyInput | parentUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: parentCreateManyBabyInputEnvelope
+    set?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    disconnect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    delete?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    connect?: parentWhereUniqueInput | parentWhereUniqueInput[]
+    update?: parentUpdateWithWhereUniqueWithoutBabyInput | parentUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: parentUpdateManyWithWhereWithoutBabyInput | parentUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: parentScalarWhereInput | parentScalarWhereInput[]
   }
 
-  export type BabyUpdateOneRequiredWithoutParentsNestedInput = {
-    create?: XOR<BabyCreateWithoutParentsInput, BabyUncheckedCreateWithoutParentsInput>
-    connectOrCreate?: BabyCreateOrConnectWithoutParentsInput
-    upsert?: BabyUpsertWithoutParentsInput
-    connect?: BabyWhereUniqueInput
-    update?: XOR<XOR<BabyUpdateToOneWithWhereWithoutParentsInput, BabyUpdateWithoutParentsInput>, BabyUncheckedUpdateWithoutParentsInput>
+  export type mealUncheckedUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput> | mealCreateWithoutBabyInput[] | mealUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: mealCreateOrConnectWithoutBabyInput | mealCreateOrConnectWithoutBabyInput[]
+    upsert?: mealUpsertWithWhereUniqueWithoutBabyInput | mealUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: mealCreateManyBabyInputEnvelope
+    set?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    disconnect?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    delete?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
+    update?: mealUpdateWithWhereUniqueWithoutBabyInput | mealUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: mealUpdateManyWithWhereWithoutBabyInput | mealUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: mealScalarWhereInput | mealScalarWhereInput[]
+  }
+
+  export type babyCreateNestedOneWithoutParentsInput = {
+    create?: XOR<babyCreateWithoutParentsInput, babyUncheckedCreateWithoutParentsInput>
+    connectOrCreate?: babyCreateOrConnectWithoutParentsInput
+    connect?: babyWhereUniqueInput
+  }
+
+  export type babyUpdateOneRequiredWithoutParentsNestedInput = {
+    create?: XOR<babyCreateWithoutParentsInput, babyUncheckedCreateWithoutParentsInput>
+    connectOrCreate?: babyCreateOrConnectWithoutParentsInput
+    upsert?: babyUpsertWithoutParentsInput
+    connect?: babyWhereUniqueInput
+    update?: XOR<XOR<babyUpdateToOneWithWhereWithoutParentsInput, babyUpdateWithoutParentsInput>, babyUncheckedUpdateWithoutParentsInput>
+  }
+
+  export type babyCreateNestedOneWithoutMealInput = {
+    create?: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
+    connectOrCreate?: babyCreateOrConnectWithoutMealInput
+    connect?: babyWhereUniqueInput
+  }
+
+  export type babyUpdateOneRequiredWithoutMealNestedInput = {
+    create?: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
+    connectOrCreate?: babyCreateOrConnectWithoutMealInput
+    upsert?: babyUpsertWithoutMealInput
+    connect?: babyWhereUniqueInput
+    update?: XOR<XOR<babyUpdateToOneWithWhereWithoutMealInput, babyUpdateWithoutMealInput>, babyUncheckedUpdateWithoutMealInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3776,120 +5198,244 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type ParentCreateWithoutBabyInput = {
+  export type parentCreateWithoutBabyInput = {
     firstName: string
     lastName: string
   }
 
-  export type ParentUncheckedCreateWithoutBabyInput = {
+  export type parentUncheckedCreateWithoutBabyInput = {
     id?: number
     firstName: string
     lastName: string
   }
 
-  export type ParentCreateOrConnectWithoutBabyInput = {
-    where: ParentWhereUniqueInput
-    create: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput>
+  export type parentCreateOrConnectWithoutBabyInput = {
+    where: parentWhereUniqueInput
+    create: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput>
   }
 
-  export type ParentCreateManyBabyInputEnvelope = {
-    data: ParentCreateManyBabyInput | ParentCreateManyBabyInput[]
+  export type parentCreateManyBabyInputEnvelope = {
+    data: parentCreateManyBabyInput | parentCreateManyBabyInput[]
     skipDuplicates?: boolean
   }
 
-  export type ParentUpsertWithWhereUniqueWithoutBabyInput = {
-    where: ParentWhereUniqueInput
-    update: XOR<ParentUpdateWithoutBabyInput, ParentUncheckedUpdateWithoutBabyInput>
-    create: XOR<ParentCreateWithoutBabyInput, ParentUncheckedCreateWithoutBabyInput>
+  export type mealCreateWithoutBabyInput = {
+    meal: string
+    mealQnt: string
   }
 
-  export type ParentUpdateWithWhereUniqueWithoutBabyInput = {
-    where: ParentWhereUniqueInput
-    data: XOR<ParentUpdateWithoutBabyInput, ParentUncheckedUpdateWithoutBabyInput>
+  export type mealUncheckedCreateWithoutBabyInput = {
+    id?: number
+    meal: string
+    mealQnt: string
   }
 
-  export type ParentUpdateManyWithWhereWithoutBabyInput = {
-    where: ParentScalarWhereInput
-    data: XOR<ParentUpdateManyMutationInput, ParentUncheckedUpdateManyWithoutBabyInput>
+  export type mealCreateOrConnectWithoutBabyInput = {
+    where: mealWhereUniqueInput
+    create: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput>
   }
 
-  export type ParentScalarWhereInput = {
-    AND?: ParentScalarWhereInput | ParentScalarWhereInput[]
-    OR?: ParentScalarWhereInput[]
-    NOT?: ParentScalarWhereInput | ParentScalarWhereInput[]
-    id?: IntFilter<"Parent"> | number
-    firstName?: StringFilter<"Parent"> | string
-    lastName?: StringFilter<"Parent"> | string
-    babyId?: IntFilter<"Parent"> | number
+  export type mealCreateManyBabyInputEnvelope = {
+    data: mealCreateManyBabyInput | mealCreateManyBabyInput[]
+    skipDuplicates?: boolean
   }
 
-  export type BabyCreateWithoutParentsInput = {
+  export type parentUpsertWithWhereUniqueWithoutBabyInput = {
+    where: parentWhereUniqueInput
+    update: XOR<parentUpdateWithoutBabyInput, parentUncheckedUpdateWithoutBabyInput>
+    create: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput>
+  }
+
+  export type parentUpdateWithWhereUniqueWithoutBabyInput = {
+    where: parentWhereUniqueInput
+    data: XOR<parentUpdateWithoutBabyInput, parentUncheckedUpdateWithoutBabyInput>
+  }
+
+  export type parentUpdateManyWithWhereWithoutBabyInput = {
+    where: parentScalarWhereInput
+    data: XOR<parentUpdateManyMutationInput, parentUncheckedUpdateManyWithoutBabyInput>
+  }
+
+  export type parentScalarWhereInput = {
+    AND?: parentScalarWhereInput | parentScalarWhereInput[]
+    OR?: parentScalarWhereInput[]
+    NOT?: parentScalarWhereInput | parentScalarWhereInput[]
+    id?: IntFilter<"parent"> | number
+    firstName?: StringFilter<"parent"> | string
+    lastName?: StringFilter<"parent"> | string
+    babyId?: IntFilter<"parent"> | number
+  }
+
+  export type mealUpsertWithWhereUniqueWithoutBabyInput = {
+    where: mealWhereUniqueInput
+    update: XOR<mealUpdateWithoutBabyInput, mealUncheckedUpdateWithoutBabyInput>
+    create: XOR<mealCreateWithoutBabyInput, mealUncheckedCreateWithoutBabyInput>
+  }
+
+  export type mealUpdateWithWhereUniqueWithoutBabyInput = {
+    where: mealWhereUniqueInput
+    data: XOR<mealUpdateWithoutBabyInput, mealUncheckedUpdateWithoutBabyInput>
+  }
+
+  export type mealUpdateManyWithWhereWithoutBabyInput = {
+    where: mealScalarWhereInput
+    data: XOR<mealUpdateManyMutationInput, mealUncheckedUpdateManyWithoutBabyInput>
+  }
+
+  export type mealScalarWhereInput = {
+    AND?: mealScalarWhereInput | mealScalarWhereInput[]
+    OR?: mealScalarWhereInput[]
+    NOT?: mealScalarWhereInput | mealScalarWhereInput[]
+    id?: IntFilter<"meal"> | number
+    meal?: StringFilter<"meal"> | string
+    mealQnt?: StringFilter<"meal"> | string
+    babyId?: IntFilter<"meal"> | number
+  }
+
+  export type babyCreateWithoutParentsInput = {
     firstName: string
     lastName: string
     height: number
     weight: number
+    meal?: mealCreateNestedManyWithoutBabyInput
   }
 
-  export type BabyUncheckedCreateWithoutParentsInput = {
+  export type babyUncheckedCreateWithoutParentsInput = {
     id?: number
     firstName: string
     lastName: string
     height: number
     weight: number
+    meal?: mealUncheckedCreateNestedManyWithoutBabyInput
   }
 
-  export type BabyCreateOrConnectWithoutParentsInput = {
-    where: BabyWhereUniqueInput
-    create: XOR<BabyCreateWithoutParentsInput, BabyUncheckedCreateWithoutParentsInput>
+  export type babyCreateOrConnectWithoutParentsInput = {
+    where: babyWhereUniqueInput
+    create: XOR<babyCreateWithoutParentsInput, babyUncheckedCreateWithoutParentsInput>
   }
 
-  export type BabyUpsertWithoutParentsInput = {
-    update: XOR<BabyUpdateWithoutParentsInput, BabyUncheckedUpdateWithoutParentsInput>
-    create: XOR<BabyCreateWithoutParentsInput, BabyUncheckedCreateWithoutParentsInput>
-    where?: BabyWhereInput
+  export type babyUpsertWithoutParentsInput = {
+    update: XOR<babyUpdateWithoutParentsInput, babyUncheckedUpdateWithoutParentsInput>
+    create: XOR<babyCreateWithoutParentsInput, babyUncheckedCreateWithoutParentsInput>
+    where?: babyWhereInput
   }
 
-  export type BabyUpdateToOneWithWhereWithoutParentsInput = {
-    where?: BabyWhereInput
-    data: XOR<BabyUpdateWithoutParentsInput, BabyUncheckedUpdateWithoutParentsInput>
+  export type babyUpdateToOneWithWhereWithoutParentsInput = {
+    where?: babyWhereInput
+    data: XOR<babyUpdateWithoutParentsInput, babyUncheckedUpdateWithoutParentsInput>
   }
 
-  export type BabyUpdateWithoutParentsInput = {
+  export type babyUpdateWithoutParentsInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
     weight?: IntFieldUpdateOperationsInput | number
+    meal?: mealUpdateManyWithoutBabyNestedInput
   }
 
-  export type BabyUncheckedUpdateWithoutParentsInput = {
+  export type babyUncheckedUpdateWithoutParentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
     weight?: IntFieldUpdateOperationsInput | number
+    meal?: mealUncheckedUpdateManyWithoutBabyNestedInput
   }
 
-  export type ParentCreateManyBabyInput = {
+  export type babyCreateWithoutMealInput = {
+    firstName: string
+    lastName: string
+    height: number
+    weight: number
+    parents?: parentCreateNestedManyWithoutBabyInput
+  }
+
+  export type babyUncheckedCreateWithoutMealInput = {
+    id?: number
+    firstName: string
+    lastName: string
+    height: number
+    weight: number
+    parents?: parentUncheckedCreateNestedManyWithoutBabyInput
+  }
+
+  export type babyCreateOrConnectWithoutMealInput = {
+    where: babyWhereUniqueInput
+    create: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
+  }
+
+  export type babyUpsertWithoutMealInput = {
+    update: XOR<babyUpdateWithoutMealInput, babyUncheckedUpdateWithoutMealInput>
+    create: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
+    where?: babyWhereInput
+  }
+
+  export type babyUpdateToOneWithWhereWithoutMealInput = {
+    where?: babyWhereInput
+    data: XOR<babyUpdateWithoutMealInput, babyUncheckedUpdateWithoutMealInput>
+  }
+
+  export type babyUpdateWithoutMealInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
+    parents?: parentUpdateManyWithoutBabyNestedInput
+  }
+
+  export type babyUncheckedUpdateWithoutMealInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    weight?: IntFieldUpdateOperationsInput | number
+    parents?: parentUncheckedUpdateManyWithoutBabyNestedInput
+  }
+
+  export type parentCreateManyBabyInput = {
     id?: number
     firstName: string
     lastName: string
   }
 
-  export type ParentUpdateWithoutBabyInput = {
+  export type mealCreateManyBabyInput = {
+    id?: number
+    meal: string
+    mealQnt: string
+  }
+
+  export type parentUpdateWithoutBabyInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ParentUncheckedUpdateWithoutBabyInput = {
+  export type parentUncheckedUpdateWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
   }
 
-  export type ParentUncheckedUpdateManyWithoutBabyInput = {
+  export type parentUncheckedUpdateManyWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mealUpdateWithoutBabyInput = {
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mealUncheckedUpdateWithoutBabyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mealUncheckedUpdateManyWithoutBabyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    meal?: StringFieldUpdateOperationsInput | string
+    mealQnt?: StringFieldUpdateOperationsInput | string
   }
 
 
