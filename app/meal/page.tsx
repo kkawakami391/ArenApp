@@ -3,28 +3,46 @@
 import { useForm } from "react-hook-form";
 import { MealFormData, mealSchema } from "../models/MealSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 
 export default function MealPage() {
+  const [message, setMessage] = useState("");
+
   const {
     register,
     handleSubmit,
+    reset,
+    setFocus,
     formState: { errors },
   } = useForm<MealFormData>({ resolver: zodResolver(mealSchema) });
 
   async function onSubmit(data: MealFormData) {
     // TODO: Obtener el babyId desde datos del login?
     const postData = { ...data, babyId: 1 };
-    const response = await fetch("/api/registMeal", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(postData),
-    });
-    const result = await response.json();
-    console.log(result);
+    try {
+      const response = await fetch("/api/registMeal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(postData),
+      });
+      const result = await response.json();
+
+      // TODO: Utilizar el mensaje del response para darle un feedback al usuario
+      setMessage(result.message);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
+  // Hacer focus al input
+  useEffect(() => {
+    setFocus("meal");
+  }, [setFocus]);
+
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
+      {message && <p className="text-2xl text-blue-500 mb-5">{message}</p>}
       <form
         className="flex flex-col items-start space-y-1"
         onSubmit={handleSubmit(onSubmit)}

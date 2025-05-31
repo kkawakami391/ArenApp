@@ -18,6 +18,6 @@ export async function POST(request: Request) {
   const registeredMeal = await prisma.meal.create({ data });
   return NextResponse.json({
     data: registeredMeal,
-    message: "Registro de alimento exitoso.",
+    message: "Registro de alimento exitoso!",
   });
 }
