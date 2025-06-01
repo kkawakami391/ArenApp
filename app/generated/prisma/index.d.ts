@@ -3339,6 +3339,7 @@ export namespace Prisma {
     id: number | null
     meal: string | null
     mealQnt: string | null
+    mealTime: Date | null
     babyId: number | null
   }
 
@@ -3346,6 +3347,7 @@ export namespace Prisma {
     id: number | null
     meal: string | null
     mealQnt: string | null
+    mealTime: Date | null
     babyId: number | null
   }
 
@@ -3353,6 +3355,7 @@ export namespace Prisma {
     id: number
     meal: number
     mealQnt: number
+    mealTime: number
     babyId: number
     _all: number
   }
@@ -3372,6 +3375,7 @@ export namespace Prisma {
     id?: true
     meal?: true
     mealQnt?: true
+    mealTime?: true
     babyId?: true
   }
 
@@ -3379,6 +3383,7 @@ export namespace Prisma {
     id?: true
     meal?: true
     mealQnt?: true
+    mealTime?: true
     babyId?: true
   }
 
@@ -3386,6 +3391,7 @@ export namespace Prisma {
     id?: true
     meal?: true
     mealQnt?: true
+    mealTime?: true
     babyId?: true
     _all?: true
   }
@@ -3480,6 +3486,7 @@ export namespace Prisma {
     id: number
     meal: string
     mealQnt: string
+    mealTime: Date
     babyId: number
     _count: MealCountAggregateOutputType | null
     _avg: MealAvgAggregateOutputType | null
@@ -3506,6 +3513,7 @@ export namespace Prisma {
     id?: boolean
     meal?: boolean
     mealQnt?: boolean
+    mealTime?: boolean
     babyId?: boolean
     baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meal"]>
@@ -3514,6 +3522,7 @@ export namespace Prisma {
     id?: boolean
     meal?: boolean
     mealQnt?: boolean
+    mealTime?: boolean
     babyId?: boolean
     baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meal"]>
@@ -3522,6 +3531,7 @@ export namespace Prisma {
     id?: boolean
     meal?: boolean
     mealQnt?: boolean
+    mealTime?: boolean
     babyId?: boolean
     baby?: boolean | babyDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meal"]>
@@ -3530,10 +3540,11 @@ export namespace Prisma {
     id?: boolean
     meal?: boolean
     mealQnt?: boolean
+    mealTime?: boolean
     babyId?: boolean
   }
 
-  export type mealOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meal" | "mealQnt" | "babyId", ExtArgs["result"]["meal"]>
+  export type mealOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "meal" | "mealQnt" | "mealTime" | "babyId", ExtArgs["result"]["meal"]>
   export type mealInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     baby?: boolean | babyDefaultArgs<ExtArgs>
   }
@@ -3553,6 +3564,7 @@ export namespace Prisma {
       id: number
       meal: string
       mealQnt: string
+      mealTime: Date
       babyId: number
     }, ExtArgs["result"]["meal"]>
     composites: {}
@@ -3981,6 +3993,7 @@ export namespace Prisma {
     readonly id: FieldRef<"meal", 'Int'>
     readonly meal: FieldRef<"meal", 'String'>
     readonly mealQnt: FieldRef<"meal", 'String'>
+    readonly mealTime: FieldRef<"meal", 'DateTime'>
     readonly babyId: FieldRef<"meal", 'Int'>
   }
     
@@ -4435,6 +4448,7 @@ export namespace Prisma {
     id: 'id',
     meal: 'meal',
     mealQnt: 'mealQnt',
+    mealTime: 'mealTime',
     babyId: 'babyId'
   };
 
@@ -4487,6 +4501,20 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -4626,6 +4654,7 @@ export namespace Prisma {
     id?: IntFilter<"meal"> | number
     meal?: StringFilter<"meal"> | string
     mealQnt?: StringFilter<"meal"> | string
+    mealTime?: DateTimeFilter<"meal"> | Date | string
     babyId?: IntFilter<"meal"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }
@@ -4634,6 +4663,7 @@ export namespace Prisma {
     id?: SortOrder
     meal?: SortOrder
     mealQnt?: SortOrder
+    mealTime?: SortOrder
     babyId?: SortOrder
     baby?: babyOrderByWithRelationInput
   }
@@ -4645,6 +4675,7 @@ export namespace Prisma {
     NOT?: mealWhereInput | mealWhereInput[]
     meal?: StringFilter<"meal"> | string
     mealQnt?: StringFilter<"meal"> | string
+    mealTime?: DateTimeFilter<"meal"> | Date | string
     babyId?: IntFilter<"meal"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }, "id">
@@ -4653,6 +4684,7 @@ export namespace Prisma {
     id?: SortOrder
     meal?: SortOrder
     mealQnt?: SortOrder
+    mealTime?: SortOrder
     babyId?: SortOrder
     _count?: mealCountOrderByAggregateInput
     _avg?: mealAvgOrderByAggregateInput
@@ -4668,6 +4700,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"meal"> | number
     meal?: StringWithAggregatesFilter<"meal"> | string
     mealQnt?: StringWithAggregatesFilter<"meal"> | string
+    mealTime?: DateTimeWithAggregatesFilter<"meal"> | Date | string
     babyId?: IntWithAggregatesFilter<"meal"> | number
   }
 
@@ -4780,6 +4813,7 @@ export namespace Prisma {
   export type mealCreateInput = {
     meal: string
     mealQnt: string
+    mealTime: Date | string
     baby: babyCreateNestedOneWithoutMealInput
   }
 
@@ -4787,12 +4821,14 @@ export namespace Prisma {
     id?: number
     meal: string
     mealQnt: string
+    mealTime: Date | string
     babyId: number
   }
 
   export type mealUpdateInput = {
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
     baby?: babyUpdateOneRequiredWithoutMealNestedInput
   }
 
@@ -4800,6 +4836,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4807,18 +4844,21 @@ export namespace Prisma {
     id?: number
     meal: string
     mealQnt: string
+    mealTime: Date | string
     babyId: number
   }
 
   export type mealUpdateManyMutationInput = {
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type mealUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4974,10 +5014,22 @@ export namespace Prisma {
     babyId?: SortOrder
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type mealCountOrderByAggregateInput = {
     id?: SortOrder
     meal?: SortOrder
     mealQnt?: SortOrder
+    mealTime?: SortOrder
     babyId?: SortOrder
   }
 
@@ -4990,6 +5042,7 @@ export namespace Prisma {
     id?: SortOrder
     meal?: SortOrder
     mealQnt?: SortOrder
+    mealTime?: SortOrder
     babyId?: SortOrder
   }
 
@@ -4997,12 +5050,27 @@ export namespace Prisma {
     id?: SortOrder
     meal?: SortOrder
     mealQnt?: SortOrder
+    mealTime?: SortOrder
     babyId?: SortOrder
   }
 
   export type mealSumOrderByAggregateInput = {
     id?: SortOrder
     babyId?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type parentCreateNestedManyWithoutBabyInput = {
@@ -5121,6 +5189,10 @@ export namespace Prisma {
     connect?: babyWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type babyUpdateOneRequiredWithoutMealNestedInput = {
     create?: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
     connectOrCreate?: babyCreateOrConnectWithoutMealInput
@@ -5198,6 +5270,31 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type parentCreateWithoutBabyInput = {
     firstName: string
     lastName: string
@@ -5222,12 +5319,14 @@ export namespace Prisma {
   export type mealCreateWithoutBabyInput = {
     meal: string
     mealQnt: string
+    mealTime: Date | string
   }
 
   export type mealUncheckedCreateWithoutBabyInput = {
     id?: number
     meal: string
     mealQnt: string
+    mealTime: Date | string
   }
 
   export type mealCreateOrConnectWithoutBabyInput = {
@@ -5289,6 +5388,7 @@ export namespace Prisma {
     id?: IntFilter<"meal"> | number
     meal?: StringFilter<"meal"> | string
     mealQnt?: StringFilter<"meal"> | string
+    mealTime?: DateTimeFilter<"meal"> | Date | string
     babyId?: IntFilter<"meal"> | number
   }
 
@@ -5402,6 +5502,7 @@ export namespace Prisma {
     id?: number
     meal: string
     mealQnt: string
+    mealTime: Date | string
   }
 
   export type parentUpdateWithoutBabyInput = {
@@ -5424,18 +5525,21 @@ export namespace Prisma {
   export type mealUpdateWithoutBabyInput = {
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type mealUncheckedUpdateWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type mealUncheckedUpdateManyWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
+    mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

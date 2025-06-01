@@ -27,9 +27,10 @@ model parent {
 }
 
 model meal {
-  id      Int    @id @default(autoincrement())
-  meal    String
-  mealQnt String
-  babyId  Int
-  baby    baby   @relation(fields: [babyId], references: [id])
+  id       Int      @id @default(autoincrement())
+  meal     String
+  mealQnt  String
+  mealTime DateTime
+  babyId   Int
+  baby     baby     @relation(fields: [babyId], references: [id])
 }

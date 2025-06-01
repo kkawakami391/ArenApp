@@ -4,9 +4,11 @@ import { useForm } from "react-hook-form";
 import { MealFormData, mealSchema } from "../models/MealSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 export default function MealPage() {
   const [message, setMessage] = useState("");
+  const [maxDate, setMaxDate] = useState("");
 
   const {
     register,
@@ -18,7 +20,11 @@ export default function MealPage() {
 
   async function onSubmit(data: MealFormData) {
     // TODO: Obtener el babyId desde datos del login?
-    const postData = { ...data, babyId: 1 };
+    const postData = {
+      ...data,
+      babyId: 1,
+      mealTime: dayjs(data.mealTime).toDate(),
+    };
     try {
       const response = await fetch("/api/registMeal", {
         method: "POST",
@@ -38,6 +44,7 @@ export default function MealPage() {
   // Hacer focus al input
   useEffect(() => {
     setFocus("meal");
+    setMaxDate(dayjs().format("YYYY-MM-DDTHH:mm"));
   }, [setFocus]);
 
   return (
@@ -75,6 +82,15 @@ export default function MealPage() {
         {errors.mealQnt && (
           <span className="text-red-500 text-xl">{errors.mealQnt.message}</span>
         )}
+        {/* Input de fecha */}
+        <label className="text-3xl">Dia y hora</label>
+        <input
+          type="datetime-local"
+          max={maxDate}
+          placeholder="Dia y hora"
+          className="border-8 border-gray-300 rounded-xl text-3xl"
+          {...register("mealTime")}
+        />
         <div className="w-full flex justify-center pt-8">
           <button
             type="submit"

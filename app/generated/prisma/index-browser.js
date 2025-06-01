@@ -139,6 +139,7 @@ exports.Prisma.MealScalarFieldEnum = {
   id: 'id',
   meal: 'meal',
   mealQnt: 'mealQnt',
+  mealTime: 'mealTime',
   babyId: 'babyId'
 };
 
