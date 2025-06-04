@@ -6,6 +6,7 @@ type Props = {
   babyId: number;
 };
 
+// TODO: Pasar el babyId desde los datos del usuario logeado.
 export default function PrimaryButton({ meal, mealQnt }: Props) {
   return (
     <button
