@@ -13,6 +13,18 @@ export default {
         "gray-blue": "#B3C8CF",
         "dark-cream": "#E5E1DA",
         cream: "#F1F0E8",
+        green: "#CCD5AE",
+        "light-green": "#E9EDC9",
+        brown: "#D4A373",
+      },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle 200ms ease-in-out",
       },
     },
   },

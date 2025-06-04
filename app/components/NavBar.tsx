@@ -8,7 +8,7 @@ function NavBar() {
   const path = usePathname();
 
   return (
-    <nav className="border-2 border-b-gray-400 bg-cream shadow-lg shadow-amber-50">
+    <nav className="border-2 border-b-gray-400 bg-cream shadow-lg shadow-amber-50 mb-10">
       <div className="flex items-center justify-between">
         <Link href="/" className="group hover:text-blue-500">
           <div className="flex">
