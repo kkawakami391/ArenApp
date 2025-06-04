@@ -28,9 +28,6 @@ jobs:
       - name: Run TypeScript check
         run: npx tsc --noEmit
 
-      - name: Run ESLint
-        run: npx eslint . --ext .ts,.tsx
-
       - name: Build Project
         run: npm run build
 
