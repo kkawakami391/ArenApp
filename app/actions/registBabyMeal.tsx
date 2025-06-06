@@ -23,12 +23,18 @@ export async function registBabyMeal(
       data: {
         meal: data.meal,
         mealQnt: data.mealQnt,
-        babyId: data.babyId,
+        mealTime: data.mealTime,
+        baby: {
+          connect: { id: 1 },
+        },
       },
     });
 
     return mealCreated;
-  } catch (error) {
-    throw new Error(error);
+  } catch (err) {
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    }
+    throw new Error("Error inesperado ha ocurrido");
   }
 }
