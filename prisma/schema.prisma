@@ -9,13 +9,14 @@ datasource db {
 }
 
 model baby {
-  id        Int      @id @default(autoincrement())
-  firstName String
-  lastName  String
-  height    Int
-  weight    Int
-  parents   parent[]
-  meal      meal[]
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  height      Int
+  dateOfBirth DateTime
+  parents     parent[]
+  meal        meal[]
+  weight      weight[]
 }
 
 model parent {
@@ -33,4 +34,13 @@ model meal {
   mealTime DateTime
   babyId   Int
   baby     baby     @relation(fields: [babyId], references: [id])
+}
+
+model weight {
+  id            Int      @id @default(autoincrement())
+  weight        String
+  weightTime    String
+  weightComment DateTime
+  babyId        Int
+  baby          baby     @relation(fields: [babyId], references: [id])
 }
