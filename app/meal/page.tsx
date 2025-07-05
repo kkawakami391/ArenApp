@@ -1,13 +1,15 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { MealFormData, mealSchema } from "../models/MealSchema";
+import { MealFormSchema, mealFormSchema } from "../models/MealSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
+import { registBabyMeal } from "../actions/registBabyMeal";
 
 export default function MealPage() {
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const [maxDate, setMaxDate] = useState("");
 
   const {
@@ -16,10 +18,12 @@ export default function MealPage() {
     reset,
     setFocus,
     formState: { errors },
-  } = useForm<MealFormData>({ resolver: zodResolver(mealSchema) });
+  } = useForm<MealFormSchema>({ resolver: zodResolver(mealFormSchema) });
 
-  async function onSubmit(data: MealFormData) {
-    // TODO: Obtener el babyId desde datos del login?
+  // -----------------Usando API / route.ts---------------------------
+  async function onSubmit(data: MealFormSchema) {
+    setMessage("");
+    // Obtener el babyId desde datos del login?
     const postData = {
       ...data,
       babyId: 1,
@@ -33,13 +37,36 @@ export default function MealPage() {
       });
       const result = await response.json();
 
-      // TODO: Utilizar el mensaje del response para darle un feedback al usuario
+      // Utilizar el mensaje del response para darle un feedback al usuario
       setMessage(result.message);
       reset();
     } catch (error) {
       console.error(error);
     }
   }
+  // ----------------------------------------------------------------
+  // async function onSubmit(data: MealFormSchema) {
+  //   try {
+  //     const mealData = await registBabyMeal(
+  //       data.meal,
+  //       data.mealQnt,
+  //       data.mealTime,
+  //       // TODO: Obtener el babyId desde los datos del usuario
+  //       1,
+  //     );
+  //
+  //     if (mealData.errorMsg) {
+  //       setError(mealData.errorMsg);
+  //     } else if (mealData.successMsg) {
+  //       setMessage(mealData.successMsg);
+  //     }
+  //   } catch (error) {
+  //     setError("Ocurrio un error inesperado");
+  //     console.error(error);
+  //   } finally {
+  //     reset();
+  //   }
+  // }
 
   // Hacer focus al input
   useEffect(() => {
@@ -50,6 +77,7 @@ export default function MealPage() {
   return (
     <div className="flex flex-col items-center justify-center">
       {message && <p className="text-2xl text-blue-500 mb-5">{message}</p>}
+      {error && <p className="text-2xl text-red-500 mb-5">{error}</p>}
       <form
         className="flex flex-col items-start space-y-1"
         onSubmit={handleSubmit(onSubmit)}
@@ -88,7 +116,7 @@ export default function MealPage() {
           type="datetime-local"
           max={maxDate}
           placeholder="Dia y hora"
-          className="border-8 border-gray-300 rounded-xl text-3xl"
+          className="border-8 border-gray-300 rounded-xl text-3xl w-full"
           {...register("mealTime")}
         />
         <div className="w-full flex justify-center pt-8">
