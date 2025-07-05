@@ -2,7 +2,9 @@ import dayjs from "dayjs";
 import { z } from "zod";
 
 export const weightSchema = z.object({
-  weight: z.number().min(1000, "El peso minimo tiene que ser de 1000gr"),
+  weight: z.string().regex(/^\d+(.\d+)?$/, {
+    message: "El peso ingresado no es valido",
+  }),
   weightTime: z.string().refine((val) => dayjs(val).isValid(), {
     message: "El formato del date es invalido",
   }),
@@ -10,3 +12,10 @@ export const weightSchema = z.object({
 });
 
 export type WeightFormData = z.infer<typeof weightSchema>;
+
+export const weightRequestSchema = z.object({
+  ...weightSchema.shape,
+  babyId: z.number(),
+});
+
+export type WeightRequestSchema = z.infer<typeof weightRequestSchema>;

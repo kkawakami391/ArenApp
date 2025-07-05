@@ -125,7 +125,7 @@ exports.Prisma.BabyScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   height: 'height',
-  weight: 'weight'
+  dateOfBirth: 'dateOfBirth'
 };
 
 exports.Prisma.ParentScalarFieldEnum = {
@@ -143,6 +143,14 @@ exports.Prisma.MealScalarFieldEnum = {
   babyId: 'babyId'
 };
 
+exports.Prisma.WeightScalarFieldEnum = {
+  id: 'id',
+  weight: 'weight',
+  weightTime: 'weightTime',
+  weightComment: 'weightComment',
+  babyId: 'babyId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -157,7 +165,8 @@ exports.Prisma.QueryMode = {
 exports.Prisma.ModelName = {
   baby: 'baby',
   parent: 'parent',
-  meal: 'meal'
+  meal: 'meal',
+  weight: 'weight'
 };
 
 /**
