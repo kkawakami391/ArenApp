@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { z } from "zod";
 
 export const weightSchema = z.object({
-  weight: z.string().regex(/^\d+(.\d+)?$/, {
+  weight: z.string().regex(/^\d+(\.\d+)?$/, {
     message: "El peso ingresado no es valido",
   }),
   weightTime: z.string().refine((val) => dayjs(val).isValid(), {
