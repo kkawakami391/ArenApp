@@ -13,11 +13,12 @@ export const mealSchema = z.object({
   mealTime: z.string().refine((val) => dayjs(val).isValid(), {
     message: "El formato del date es invalido",
   }),
+  babyId: z.number(),
 });
 
-export type MealFormData = z.infer<typeof mealSchema>;
+export type MealSchema = z.infer<typeof mealSchema>;
 
-export const mealRequestSchema = z.object({
+export const mealFormSchema = z.object({
   meal: z.string().min(1, "El nombre del alimento es obligatorio"),
   mealQnt: z
     .string()
@@ -28,5 +29,6 @@ export const mealRequestSchema = z.object({
   mealTime: z.string().refine((val) => dayjs(val).isValid(), {
     message: "El formato del date es invalido",
   }),
-  babyId: z.number(),
 });
+
+export type MealFormSchema = z.infer<typeof mealFormSchema>;

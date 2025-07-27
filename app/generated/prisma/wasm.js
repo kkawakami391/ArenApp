@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.11.1
+ * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.11.1",
+  engine: "f40f79ec31188888a2e33acda0ecc8fd10a853a9"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -125,7 +125,7 @@ exports.Prisma.BabyScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   height: 'height',
-  weight: 'weight'
+  dateOfBirth: 'dateOfBirth'
 };
 
 exports.Prisma.ParentScalarFieldEnum = {
@@ -143,6 +143,14 @@ exports.Prisma.MealScalarFieldEnum = {
   babyId: 'babyId'
 };
 
+exports.Prisma.WeightScalarFieldEnum = {
+  id: 'id',
+  weight: 'weight',
+  weightTime: 'weightTime',
+  weightComment: 'weightComment',
+  babyId: 'babyId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -153,11 +161,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
   baby: 'baby',
   parent: 'parent',
-  meal: 'meal'
+  meal: 'meal',
+  weight: 'weight'
 };
 
 /**

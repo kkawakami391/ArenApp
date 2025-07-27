@@ -28,6 +28,11 @@ export type parent = $Result.DefaultSelection<Prisma.$parentPayload>
  * 
  */
 export type meal = $Result.DefaultSelection<Prisma.$mealPayload>
+/**
+ * Model weight
+ * 
+ */
+export type weight = $Result.DefaultSelection<Prisma.$weightPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -131,6 +136,16 @@ export class PrismaClient<
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
+  /**
+   * Executes a typed SQL query and returns a typed result
+   * @example
+   * ```
+   * import { myQuery } from '@prisma/client/sql'
+   * 
+   * const result = await prisma.$queryRawTyped(myQuery())
+   * ```
+   */
+  $queryRawTyped<T>(typedSql: runtime.TypedSql<unknown[], T>): Prisma.PrismaPromise<T[]>
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -183,6 +198,16 @@ export class PrismaClient<
     * ```
     */
   get meal(): Prisma.mealDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.weight`: Exposes CRUD operations for the **weight** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Weights
+    * const weights = await prisma.weight.findMany()
+    * ```
+    */
+  get weight(): Prisma.weightDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -241,8 +266,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.11.1
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -625,7 +650,8 @@ export namespace Prisma {
   export const ModelName: {
     baby: 'baby',
     parent: 'parent',
-    meal: 'meal'
+    meal: 'meal',
+    weight: 'weight'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +670,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "baby" | "parent" | "meal"
+      modelProps: "baby" | "parent" | "meal" | "weight"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -870,6 +896,80 @@ export namespace Prisma {
           }
         }
       }
+      weight: {
+        payload: Prisma.$weightPayload<ExtArgs>
+        fields: Prisma.weightFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.weightFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.weightFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          findFirst: {
+            args: Prisma.weightFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.weightFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          findMany: {
+            args: Prisma.weightFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>[]
+          }
+          create: {
+            args: Prisma.weightCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          createMany: {
+            args: Prisma.weightCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.weightCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>[]
+          }
+          delete: {
+            args: Prisma.weightDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          update: {
+            args: Prisma.weightUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          deleteMany: {
+            args: Prisma.weightDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.weightUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.weightUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>[]
+          }
+          upsert: {
+            args: Prisma.weightUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$weightPayload>
+          }
+          aggregate: {
+            args: Prisma.WeightAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWeight>
+          }
+          groupBy: {
+            args: Prisma.weightGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WeightGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.weightCountArgs<ExtArgs>
+            result: $Utils.Optional<WeightCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -890,6 +990,10 @@ export namespace Prisma {
         $queryRawUnsafe: {
           args: [query: string, ...values: any[]],
           result: any
+        }
+        $queryRawTyped: {
+          args: runtime.UnknownTypedSql,
+          result: Prisma.JsonObject
         }
       }
     }
@@ -957,6 +1061,7 @@ export namespace Prisma {
     baby?: babyOmit
     parent?: parentOmit
     meal?: mealOmit
+    weight?: weightOmit
   }
 
   /* Types for Logging */
@@ -1053,11 +1158,13 @@ export namespace Prisma {
   export type BabyCountOutputType = {
     parents: number
     meal: number
+    weight: number
   }
 
   export type BabyCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parents?: boolean | BabyCountOutputTypeCountParentsArgs
     meal?: boolean | BabyCountOutputTypeCountMealArgs
+    weight?: boolean | BabyCountOutputTypeCountWeightArgs
   }
 
   // Custom InputTypes
@@ -1085,6 +1192,13 @@ export namespace Prisma {
     where?: mealWhereInput
   }
 
+  /**
+   * BabyCountOutputType without action
+   */
+  export type BabyCountOutputTypeCountWeightArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: weightWhereInput
+  }
+
 
   /**
    * Models
@@ -1105,13 +1219,11 @@ export namespace Prisma {
   export type BabyAvgAggregateOutputType = {
     id: number | null
     height: number | null
-    weight: number | null
   }
 
   export type BabySumAggregateOutputType = {
     id: number | null
     height: number | null
-    weight: number | null
   }
 
   export type BabyMinAggregateOutputType = {
@@ -1119,7 +1231,7 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     height: number | null
-    weight: number | null
+    dateOfBirth: Date | null
   }
 
   export type BabyMaxAggregateOutputType = {
@@ -1127,7 +1239,7 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     height: number | null
-    weight: number | null
+    dateOfBirth: Date | null
   }
 
   export type BabyCountAggregateOutputType = {
@@ -1135,7 +1247,7 @@ export namespace Prisma {
     firstName: number
     lastName: number
     height: number
-    weight: number
+    dateOfBirth: number
     _all: number
   }
 
@@ -1143,13 +1255,11 @@ export namespace Prisma {
   export type BabyAvgAggregateInputType = {
     id?: true
     height?: true
-    weight?: true
   }
 
   export type BabySumAggregateInputType = {
     id?: true
     height?: true
-    weight?: true
   }
 
   export type BabyMinAggregateInputType = {
@@ -1157,7 +1267,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     height?: true
-    weight?: true
+    dateOfBirth?: true
   }
 
   export type BabyMaxAggregateInputType = {
@@ -1165,7 +1275,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     height?: true
-    weight?: true
+    dateOfBirth?: true
   }
 
   export type BabyCountAggregateInputType = {
@@ -1173,7 +1283,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     height?: true
-    weight?: true
+    dateOfBirth?: true
     _all?: true
   }
 
@@ -1268,7 +1378,7 @@ export namespace Prisma {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date
     _count: BabyCountAggregateOutputType | null
     _avg: BabyAvgAggregateOutputType | null
     _sum: BabySumAggregateOutputType | null
@@ -1295,9 +1405,10 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     height?: boolean
-    weight?: boolean
+    dateOfBirth?: boolean
     parents?: boolean | baby$parentsArgs<ExtArgs>
     meal?: boolean | baby$mealArgs<ExtArgs>
+    weight?: boolean | baby$weightArgs<ExtArgs>
     _count?: boolean | BabyCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["baby"]>
 
@@ -1306,7 +1417,7 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     height?: boolean
-    weight?: boolean
+    dateOfBirth?: boolean
   }, ExtArgs["result"]["baby"]>
 
   export type babySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1314,7 +1425,7 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     height?: boolean
-    weight?: boolean
+    dateOfBirth?: boolean
   }, ExtArgs["result"]["baby"]>
 
   export type babySelectScalar = {
@@ -1322,13 +1433,14 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     height?: boolean
-    weight?: boolean
+    dateOfBirth?: boolean
   }
 
-  export type babyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "height" | "weight", ExtArgs["result"]["baby"]>
+  export type babyOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "height" | "dateOfBirth", ExtArgs["result"]["baby"]>
   export type babyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parents?: boolean | baby$parentsArgs<ExtArgs>
     meal?: boolean | baby$mealArgs<ExtArgs>
+    weight?: boolean | baby$weightArgs<ExtArgs>
     _count?: boolean | BabyCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type babyIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1339,13 +1451,14 @@ export namespace Prisma {
     objects: {
       parents: Prisma.$parentPayload<ExtArgs>[]
       meal: Prisma.$mealPayload<ExtArgs>[]
+      weight: Prisma.$weightPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       firstName: string
       lastName: string
       height: number
-      weight: number
+      dateOfBirth: Date
     }, ExtArgs["result"]["baby"]>
     composites: {}
   }
@@ -1742,6 +1855,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     parents<T extends baby$parentsArgs<ExtArgs> = {}>(args?: Subset<T, baby$parentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$parentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     meal<T extends baby$mealArgs<ExtArgs> = {}>(args?: Subset<T, baby$mealArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mealPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    weight<T extends baby$weightArgs<ExtArgs> = {}>(args?: Subset<T, baby$weightArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1775,7 +1889,7 @@ export namespace Prisma {
     readonly firstName: FieldRef<"baby", 'String'>
     readonly lastName: FieldRef<"baby", 'String'>
     readonly height: FieldRef<"baby", 'Int'>
-    readonly weight: FieldRef<"baby", 'Int'>
+    readonly dateOfBirth: FieldRef<"baby", 'DateTime'>
   }
     
 
@@ -2209,6 +2323,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MealScalarFieldEnum | MealScalarFieldEnum[]
+  }
+
+  /**
+   * baby.weight
+   */
+  export type baby$weightArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    where?: weightWhereInput
+    orderBy?: weightOrderByWithRelationInput | weightOrderByWithRelationInput[]
+    cursor?: weightWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WeightScalarFieldEnum | WeightScalarFieldEnum[]
   }
 
   /**
@@ -4410,6 +4548,1102 @@ export namespace Prisma {
 
 
   /**
+   * Model weight
+   */
+
+  export type AggregateWeight = {
+    _count: WeightCountAggregateOutputType | null
+    _avg: WeightAvgAggregateOutputType | null
+    _sum: WeightSumAggregateOutputType | null
+    _min: WeightMinAggregateOutputType | null
+    _max: WeightMaxAggregateOutputType | null
+  }
+
+  export type WeightAvgAggregateOutputType = {
+    id: number | null
+    babyId: number | null
+  }
+
+  export type WeightSumAggregateOutputType = {
+    id: number | null
+    babyId: number | null
+  }
+
+  export type WeightMinAggregateOutputType = {
+    id: number | null
+    weight: string | null
+    weightTime: Date | null
+    weightComment: string | null
+    babyId: number | null
+  }
+
+  export type WeightMaxAggregateOutputType = {
+    id: number | null
+    weight: string | null
+    weightTime: Date | null
+    weightComment: string | null
+    babyId: number | null
+  }
+
+  export type WeightCountAggregateOutputType = {
+    id: number
+    weight: number
+    weightTime: number
+    weightComment: number
+    babyId: number
+    _all: number
+  }
+
+
+  export type WeightAvgAggregateInputType = {
+    id?: true
+    babyId?: true
+  }
+
+  export type WeightSumAggregateInputType = {
+    id?: true
+    babyId?: true
+  }
+
+  export type WeightMinAggregateInputType = {
+    id?: true
+    weight?: true
+    weightTime?: true
+    weightComment?: true
+    babyId?: true
+  }
+
+  export type WeightMaxAggregateInputType = {
+    id?: true
+    weight?: true
+    weightTime?: true
+    weightComment?: true
+    babyId?: true
+  }
+
+  export type WeightCountAggregateInputType = {
+    id?: true
+    weight?: true
+    weightTime?: true
+    weightComment?: true
+    babyId?: true
+    _all?: true
+  }
+
+  export type WeightAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which weight to aggregate.
+     */
+    where?: weightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weights to fetch.
+     */
+    orderBy?: weightOrderByWithRelationInput | weightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: weightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned weights
+    **/
+    _count?: true | WeightCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WeightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WeightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WeightMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WeightMaxAggregateInputType
+  }
+
+  export type GetWeightAggregateType<T extends WeightAggregateArgs> = {
+        [P in keyof T & keyof AggregateWeight]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWeight[P]>
+      : GetScalarType<T[P], AggregateWeight[P]>
+  }
+
+
+
+
+  export type weightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: weightWhereInput
+    orderBy?: weightOrderByWithAggregationInput | weightOrderByWithAggregationInput[]
+    by: WeightScalarFieldEnum[] | WeightScalarFieldEnum
+    having?: weightScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WeightCountAggregateInputType | true
+    _avg?: WeightAvgAggregateInputType
+    _sum?: WeightSumAggregateInputType
+    _min?: WeightMinAggregateInputType
+    _max?: WeightMaxAggregateInputType
+  }
+
+  export type WeightGroupByOutputType = {
+    id: number
+    weight: string
+    weightTime: Date
+    weightComment: string | null
+    babyId: number
+    _count: WeightCountAggregateOutputType | null
+    _avg: WeightAvgAggregateOutputType | null
+    _sum: WeightSumAggregateOutputType | null
+    _min: WeightMinAggregateOutputType | null
+    _max: WeightMaxAggregateOutputType | null
+  }
+
+  type GetWeightGroupByPayload<T extends weightGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WeightGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WeightGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WeightGroupByOutputType[P]>
+            : GetScalarType<T[P], WeightGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type weightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    weight?: boolean
+    weightTime?: boolean
+    weightComment?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weight"]>
+
+  export type weightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    weight?: boolean
+    weightTime?: boolean
+    weightComment?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weight"]>
+
+  export type weightSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    weight?: boolean
+    weightTime?: boolean
+    weightComment?: boolean
+    babyId?: boolean
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["weight"]>
+
+  export type weightSelectScalar = {
+    id?: boolean
+    weight?: boolean
+    weightTime?: boolean
+    weightComment?: boolean
+    babyId?: boolean
+  }
+
+  export type weightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "weight" | "weightTime" | "weightComment" | "babyId", ExtArgs["result"]["weight"]>
+  export type weightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+  export type weightIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+  export type weightIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    baby?: boolean | babyDefaultArgs<ExtArgs>
+  }
+
+  export type $weightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "weight"
+    objects: {
+      baby: Prisma.$babyPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      weight: string
+      weightTime: Date
+      weightComment: string | null
+      babyId: number
+    }, ExtArgs["result"]["weight"]>
+    composites: {}
+  }
+
+  type weightGetPayload<S extends boolean | null | undefined | weightDefaultArgs> = $Result.GetResult<Prisma.$weightPayload, S>
+
+  type weightCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<weightFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WeightCountAggregateInputType | true
+    }
+
+  export interface weightDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['weight'], meta: { name: 'weight' } }
+    /**
+     * Find zero or one Weight that matches the filter.
+     * @param {weightFindUniqueArgs} args - Arguments to find a Weight
+     * @example
+     * // Get one Weight
+     * const weight = await prisma.weight.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends weightFindUniqueArgs>(args: SelectSubset<T, weightFindUniqueArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Weight that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {weightFindUniqueOrThrowArgs} args - Arguments to find a Weight
+     * @example
+     * // Get one Weight
+     * const weight = await prisma.weight.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends weightFindUniqueOrThrowArgs>(args: SelectSubset<T, weightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Weight that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightFindFirstArgs} args - Arguments to find a Weight
+     * @example
+     * // Get one Weight
+     * const weight = await prisma.weight.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends weightFindFirstArgs>(args?: SelectSubset<T, weightFindFirstArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Weight that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightFindFirstOrThrowArgs} args - Arguments to find a Weight
+     * @example
+     * // Get one Weight
+     * const weight = await prisma.weight.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends weightFindFirstOrThrowArgs>(args?: SelectSubset<T, weightFindFirstOrThrowArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Weights that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Weights
+     * const weights = await prisma.weight.findMany()
+     * 
+     * // Get first 10 Weights
+     * const weights = await prisma.weight.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const weightWithIdOnly = await prisma.weight.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends weightFindManyArgs>(args?: SelectSubset<T, weightFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Weight.
+     * @param {weightCreateArgs} args - Arguments to create a Weight.
+     * @example
+     * // Create one Weight
+     * const Weight = await prisma.weight.create({
+     *   data: {
+     *     // ... data to create a Weight
+     *   }
+     * })
+     * 
+     */
+    create<T extends weightCreateArgs>(args: SelectSubset<T, weightCreateArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Weights.
+     * @param {weightCreateManyArgs} args - Arguments to create many Weights.
+     * @example
+     * // Create many Weights
+     * const weight = await prisma.weight.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends weightCreateManyArgs>(args?: SelectSubset<T, weightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Weights and returns the data saved in the database.
+     * @param {weightCreateManyAndReturnArgs} args - Arguments to create many Weights.
+     * @example
+     * // Create many Weights
+     * const weight = await prisma.weight.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Weights and only return the `id`
+     * const weightWithIdOnly = await prisma.weight.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends weightCreateManyAndReturnArgs>(args?: SelectSubset<T, weightCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Weight.
+     * @param {weightDeleteArgs} args - Arguments to delete one Weight.
+     * @example
+     * // Delete one Weight
+     * const Weight = await prisma.weight.delete({
+     *   where: {
+     *     // ... filter to delete one Weight
+     *   }
+     * })
+     * 
+     */
+    delete<T extends weightDeleteArgs>(args: SelectSubset<T, weightDeleteArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Weight.
+     * @param {weightUpdateArgs} args - Arguments to update one Weight.
+     * @example
+     * // Update one Weight
+     * const weight = await prisma.weight.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends weightUpdateArgs>(args: SelectSubset<T, weightUpdateArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Weights.
+     * @param {weightDeleteManyArgs} args - Arguments to filter Weights to delete.
+     * @example
+     * // Delete a few Weights
+     * const { count } = await prisma.weight.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends weightDeleteManyArgs>(args?: SelectSubset<T, weightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Weights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Weights
+     * const weight = await prisma.weight.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends weightUpdateManyArgs>(args: SelectSubset<T, weightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Weights and returns the data updated in the database.
+     * @param {weightUpdateManyAndReturnArgs} args - Arguments to update many Weights.
+     * @example
+     * // Update many Weights
+     * const weight = await prisma.weight.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Weights and only return the `id`
+     * const weightWithIdOnly = await prisma.weight.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends weightUpdateManyAndReturnArgs>(args: SelectSubset<T, weightUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Weight.
+     * @param {weightUpsertArgs} args - Arguments to update or create a Weight.
+     * @example
+     * // Update or create a Weight
+     * const weight = await prisma.weight.upsert({
+     *   create: {
+     *     // ... data to create a Weight
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Weight we want to update
+     *   }
+     * })
+     */
+    upsert<T extends weightUpsertArgs>(args: SelectSubset<T, weightUpsertArgs<ExtArgs>>): Prisma__weightClient<$Result.GetResult<Prisma.$weightPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Weights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightCountArgs} args - Arguments to filter Weights to count.
+     * @example
+     * // Count the number of Weights
+     * const count = await prisma.weight.count({
+     *   where: {
+     *     // ... the filter for the Weights we want to count
+     *   }
+     * })
+    **/
+    count<T extends weightCountArgs>(
+      args?: Subset<T, weightCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WeightCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Weight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WeightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WeightAggregateArgs>(args: Subset<T, WeightAggregateArgs>): Prisma.PrismaPromise<GetWeightAggregateType<T>>
+
+    /**
+     * Group by Weight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {weightGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends weightGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: weightGroupByArgs['orderBy'] }
+        : { orderBy?: weightGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, weightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWeightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the weight model
+   */
+  readonly fields: weightFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for weight.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__weightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    baby<T extends babyDefaultArgs<ExtArgs> = {}>(args?: Subset<T, babyDefaultArgs<ExtArgs>>): Prisma__babyClient<$Result.GetResult<Prisma.$babyPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the weight model
+   */
+  interface weightFieldRefs {
+    readonly id: FieldRef<"weight", 'Int'>
+    readonly weight: FieldRef<"weight", 'String'>
+    readonly weightTime: FieldRef<"weight", 'DateTime'>
+    readonly weightComment: FieldRef<"weight", 'String'>
+    readonly babyId: FieldRef<"weight", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * weight findUnique
+   */
+  export type weightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter, which weight to fetch.
+     */
+    where: weightWhereUniqueInput
+  }
+
+  /**
+   * weight findUniqueOrThrow
+   */
+  export type weightFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter, which weight to fetch.
+     */
+    where: weightWhereUniqueInput
+  }
+
+  /**
+   * weight findFirst
+   */
+  export type weightFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter, which weight to fetch.
+     */
+    where?: weightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weights to fetch.
+     */
+    orderBy?: weightOrderByWithRelationInput | weightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for weights.
+     */
+    cursor?: weightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of weights.
+     */
+    distinct?: WeightScalarFieldEnum | WeightScalarFieldEnum[]
+  }
+
+  /**
+   * weight findFirstOrThrow
+   */
+  export type weightFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter, which weight to fetch.
+     */
+    where?: weightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weights to fetch.
+     */
+    orderBy?: weightOrderByWithRelationInput | weightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for weights.
+     */
+    cursor?: weightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of weights.
+     */
+    distinct?: WeightScalarFieldEnum | WeightScalarFieldEnum[]
+  }
+
+  /**
+   * weight findMany
+   */
+  export type weightFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter, which weights to fetch.
+     */
+    where?: weightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of weights to fetch.
+     */
+    orderBy?: weightOrderByWithRelationInput | weightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing weights.
+     */
+    cursor?: weightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` weights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` weights.
+     */
+    skip?: number
+    distinct?: WeightScalarFieldEnum | WeightScalarFieldEnum[]
+  }
+
+  /**
+   * weight create
+   */
+  export type weightCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * The data needed to create a weight.
+     */
+    data: XOR<weightCreateInput, weightUncheckedCreateInput>
+  }
+
+  /**
+   * weight createMany
+   */
+  export type weightCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many weights.
+     */
+    data: weightCreateManyInput | weightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * weight createManyAndReturn
+   */
+  export type weightCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * The data used to create many weights.
+     */
+    data: weightCreateManyInput | weightCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * weight update
+   */
+  export type weightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * The data needed to update a weight.
+     */
+    data: XOR<weightUpdateInput, weightUncheckedUpdateInput>
+    /**
+     * Choose, which weight to update.
+     */
+    where: weightWhereUniqueInput
+  }
+
+  /**
+   * weight updateMany
+   */
+  export type weightUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update weights.
+     */
+    data: XOR<weightUpdateManyMutationInput, weightUncheckedUpdateManyInput>
+    /**
+     * Filter which weights to update
+     */
+    where?: weightWhereInput
+    /**
+     * Limit how many weights to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * weight updateManyAndReturn
+   */
+  export type weightUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * The data used to update weights.
+     */
+    data: XOR<weightUpdateManyMutationInput, weightUncheckedUpdateManyInput>
+    /**
+     * Filter which weights to update
+     */
+    where?: weightWhereInput
+    /**
+     * Limit how many weights to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * weight upsert
+   */
+  export type weightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * The filter to search for the weight to update in case it exists.
+     */
+    where: weightWhereUniqueInput
+    /**
+     * In case the weight found by the `where` argument doesn't exist, create a new weight with this data.
+     */
+    create: XOR<weightCreateInput, weightUncheckedCreateInput>
+    /**
+     * In case the weight was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<weightUpdateInput, weightUncheckedUpdateInput>
+  }
+
+  /**
+   * weight delete
+   */
+  export type weightDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+    /**
+     * Filter which weight to delete.
+     */
+    where: weightWhereUniqueInput
+  }
+
+  /**
+   * weight deleteMany
+   */
+  export type weightDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which weights to delete
+     */
+    where?: weightWhereInput
+    /**
+     * Limit how many weights to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * weight without action
+   */
+  export type weightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the weight
+     */
+    select?: weightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the weight
+     */
+    omit?: weightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: weightInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -4428,7 +5662,7 @@ export namespace Prisma {
     firstName: 'firstName',
     lastName: 'lastName',
     height: 'height',
-    weight: 'weight'
+    dateOfBirth: 'dateOfBirth'
   };
 
   export type BabyScalarFieldEnum = (typeof BabyScalarFieldEnum)[keyof typeof BabyScalarFieldEnum]
@@ -4455,6 +5689,17 @@ export namespace Prisma {
   export type MealScalarFieldEnum = (typeof MealScalarFieldEnum)[keyof typeof MealScalarFieldEnum]
 
 
+  export const WeightScalarFieldEnum: {
+    id: 'id',
+    weight: 'weight',
+    weightTime: 'weightTime',
+    weightComment: 'weightComment',
+    babyId: 'babyId'
+  };
+
+  export type WeightScalarFieldEnum = (typeof WeightScalarFieldEnum)[keyof typeof WeightScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -4469,6 +5714,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4543,9 +5796,10 @@ export namespace Prisma {
     firstName?: StringFilter<"baby"> | string
     lastName?: StringFilter<"baby"> | string
     height?: IntFilter<"baby"> | number
-    weight?: IntFilter<"baby"> | number
+    dateOfBirth?: DateTimeFilter<"baby"> | Date | string
     parents?: ParentListRelationFilter
     meal?: MealListRelationFilter
+    weight?: WeightListRelationFilter
   }
 
   export type babyOrderByWithRelationInput = {
@@ -4553,9 +5807,10 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
+    dateOfBirth?: SortOrder
     parents?: parentOrderByRelationAggregateInput
     meal?: mealOrderByRelationAggregateInput
+    weight?: weightOrderByRelationAggregateInput
   }
 
   export type babyWhereUniqueInput = Prisma.AtLeast<{
@@ -4566,9 +5821,10 @@ export namespace Prisma {
     firstName?: StringFilter<"baby"> | string
     lastName?: StringFilter<"baby"> | string
     height?: IntFilter<"baby"> | number
-    weight?: IntFilter<"baby"> | number
+    dateOfBirth?: DateTimeFilter<"baby"> | Date | string
     parents?: ParentListRelationFilter
     meal?: MealListRelationFilter
+    weight?: WeightListRelationFilter
   }, "id">
 
   export type babyOrderByWithAggregationInput = {
@@ -4576,7 +5832,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
+    dateOfBirth?: SortOrder
     _count?: babyCountOrderByAggregateInput
     _avg?: babyAvgOrderByAggregateInput
     _max?: babyMaxOrderByAggregateInput
@@ -4592,7 +5848,7 @@ export namespace Prisma {
     firstName?: StringWithAggregatesFilter<"baby"> | string
     lastName?: StringWithAggregatesFilter<"baby"> | string
     height?: IntWithAggregatesFilter<"baby"> | number
-    weight?: IntWithAggregatesFilter<"baby"> | number
+    dateOfBirth?: DateTimeWithAggregatesFilter<"baby"> | Date | string
   }
 
   export type parentWhereInput = {
@@ -4704,13 +5960,71 @@ export namespace Prisma {
     babyId?: IntWithAggregatesFilter<"meal"> | number
   }
 
+  export type weightWhereInput = {
+    AND?: weightWhereInput | weightWhereInput[]
+    OR?: weightWhereInput[]
+    NOT?: weightWhereInput | weightWhereInput[]
+    id?: IntFilter<"weight"> | number
+    weight?: StringFilter<"weight"> | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
+    babyId?: IntFilter<"weight"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
+  }
+
+  export type weightOrderByWithRelationInput = {
+    id?: SortOrder
+    weight?: SortOrder
+    weightTime?: SortOrder
+    weightComment?: SortOrderInput | SortOrder
+    babyId?: SortOrder
+    baby?: babyOrderByWithRelationInput
+  }
+
+  export type weightWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: weightWhereInput | weightWhereInput[]
+    OR?: weightWhereInput[]
+    NOT?: weightWhereInput | weightWhereInput[]
+    weight?: StringFilter<"weight"> | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
+    babyId?: IntFilter<"weight"> | number
+    baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
+  }, "id">
+
+  export type weightOrderByWithAggregationInput = {
+    id?: SortOrder
+    weight?: SortOrder
+    weightTime?: SortOrder
+    weightComment?: SortOrderInput | SortOrder
+    babyId?: SortOrder
+    _count?: weightCountOrderByAggregateInput
+    _avg?: weightAvgOrderByAggregateInput
+    _max?: weightMaxOrderByAggregateInput
+    _min?: weightMinOrderByAggregateInput
+    _sum?: weightSumOrderByAggregateInput
+  }
+
+  export type weightScalarWhereWithAggregatesInput = {
+    AND?: weightScalarWhereWithAggregatesInput | weightScalarWhereWithAggregatesInput[]
+    OR?: weightScalarWhereWithAggregatesInput[]
+    NOT?: weightScalarWhereWithAggregatesInput | weightScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"weight"> | number
+    weight?: StringWithAggregatesFilter<"weight"> | string
+    weightTime?: DateTimeWithAggregatesFilter<"weight"> | Date | string
+    weightComment?: StringNullableWithAggregatesFilter<"weight"> | string | null
+    babyId?: IntWithAggregatesFilter<"weight"> | number
+  }
+
   export type babyCreateInput = {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     parents?: parentCreateNestedManyWithoutBabyInput
     meal?: mealCreateNestedManyWithoutBabyInput
+    weight?: weightCreateNestedManyWithoutBabyInput
   }
 
   export type babyUncheckedCreateInput = {
@@ -4718,18 +6032,20 @@ export namespace Prisma {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     parents?: parentUncheckedCreateNestedManyWithoutBabyInput
     meal?: mealUncheckedCreateNestedManyWithoutBabyInput
+    weight?: weightUncheckedCreateNestedManyWithoutBabyInput
   }
 
   export type babyUpdateInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     parents?: parentUpdateManyWithoutBabyNestedInput
     meal?: mealUpdateManyWithoutBabyNestedInput
+    weight?: weightUpdateManyWithoutBabyNestedInput
   }
 
   export type babyUncheckedUpdateInput = {
@@ -4737,9 +6053,10 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     parents?: parentUncheckedUpdateManyWithoutBabyNestedInput
     meal?: mealUncheckedUpdateManyWithoutBabyNestedInput
+    weight?: weightUncheckedUpdateManyWithoutBabyNestedInput
   }
 
   export type babyCreateManyInput = {
@@ -4747,14 +6064,14 @@ export namespace Prisma {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
   }
 
   export type babyUpdateManyMutationInput = {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type babyUncheckedUpdateManyInput = {
@@ -4762,7 +6079,7 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type parentCreateInput = {
@@ -4862,6 +6179,58 @@ export namespace Prisma {
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
+  export type weightCreateInput = {
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
+    baby: babyCreateNestedOneWithoutWeightInput
+  }
+
+  export type weightUncheckedCreateInput = {
+    id?: number
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
+    babyId: number
+  }
+
+  export type weightUpdateInput = {
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+    baby?: babyUpdateOneRequiredWithoutWeightNestedInput
+  }
+
+  export type weightUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+    babyId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type weightCreateManyInput = {
+    id?: number
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
+    babyId: number
+  }
+
+  export type weightUpdateManyMutationInput = {
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type weightUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+    babyId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -4888,6 +6257,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type ParentListRelationFilter = {
     every?: parentWhereInput
     some?: parentWhereInput
@@ -4900,6 +6280,12 @@ export namespace Prisma {
     none?: mealWhereInput
   }
 
+  export type WeightListRelationFilter = {
+    every?: weightWhereInput
+    some?: weightWhereInput
+    none?: weightWhereInput
+  }
+
   export type parentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -4908,18 +6294,21 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type weightOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type babyCountOrderByAggregateInput = {
     id?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
   export type babyAvgOrderByAggregateInput = {
     id?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
   }
 
   export type babyMaxOrderByAggregateInput = {
@@ -4927,7 +6316,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
   export type babyMinOrderByAggregateInput = {
@@ -4935,13 +6324,12 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
+    dateOfBirth?: SortOrder
   }
 
   export type babySumOrderByAggregateInput = {
     id?: SortOrder
     height?: SortOrder
-    weight?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4976,6 +6364,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type BabyScalarRelationFilter = {
@@ -5014,17 +6416,6 @@ export namespace Prisma {
     babyId?: SortOrder
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type mealCountOrderByAggregateInput = {
     id?: SortOrder
     meal?: SortOrder
@@ -5059,18 +6450,76 @@ export namespace Prisma {
     babyId?: SortOrder
   }
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type weightCountOrderByAggregateInput = {
+    id?: SortOrder
+    weight?: SortOrder
+    weightTime?: SortOrder
+    weightComment?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type weightAvgOrderByAggregateInput = {
+    id?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type weightMaxOrderByAggregateInput = {
+    id?: SortOrder
+    weight?: SortOrder
+    weightTime?: SortOrder
+    weightComment?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type weightMinOrderByAggregateInput = {
+    id?: SortOrder
+    weight?: SortOrder
+    weightTime?: SortOrder
+    weightComment?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type weightSumOrderByAggregateInput = {
+    id?: SortOrder
+    babyId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type parentCreateNestedManyWithoutBabyInput = {
@@ -5087,6 +6536,13 @@ export namespace Prisma {
     connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
   }
 
+  export type weightCreateNestedManyWithoutBabyInput = {
+    create?: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput> | weightCreateWithoutBabyInput[] | weightUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: weightCreateOrConnectWithoutBabyInput | weightCreateOrConnectWithoutBabyInput[]
+    createMany?: weightCreateManyBabyInputEnvelope
+    connect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+  }
+
   export type parentUncheckedCreateNestedManyWithoutBabyInput = {
     create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
     connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
@@ -5101,6 +6557,13 @@ export namespace Prisma {
     connect?: mealWhereUniqueInput | mealWhereUniqueInput[]
   }
 
+  export type weightUncheckedCreateNestedManyWithoutBabyInput = {
+    create?: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput> | weightCreateWithoutBabyInput[] | weightUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: weightCreateOrConnectWithoutBabyInput | weightCreateOrConnectWithoutBabyInput[]
+    createMany?: weightCreateManyBabyInputEnvelope
+    connect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -5111,6 +6574,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type parentUpdateManyWithoutBabyNestedInput = {
@@ -5141,6 +6608,20 @@ export namespace Prisma {
     deleteMany?: mealScalarWhereInput | mealScalarWhereInput[]
   }
 
+  export type weightUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput> | weightCreateWithoutBabyInput[] | weightUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: weightCreateOrConnectWithoutBabyInput | weightCreateOrConnectWithoutBabyInput[]
+    upsert?: weightUpsertWithWhereUniqueWithoutBabyInput | weightUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: weightCreateManyBabyInputEnvelope
+    set?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    disconnect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    delete?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    connect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    update?: weightUpdateWithWhereUniqueWithoutBabyInput | weightUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: weightUpdateManyWithWhereWithoutBabyInput | weightUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: weightScalarWhereInput | weightScalarWhereInput[]
+  }
+
   export type parentUncheckedUpdateManyWithoutBabyNestedInput = {
     create?: XOR<parentCreateWithoutBabyInput, parentUncheckedCreateWithoutBabyInput> | parentCreateWithoutBabyInput[] | parentUncheckedCreateWithoutBabyInput[]
     connectOrCreate?: parentCreateOrConnectWithoutBabyInput | parentCreateOrConnectWithoutBabyInput[]
@@ -5169,6 +6650,20 @@ export namespace Prisma {
     deleteMany?: mealScalarWhereInput | mealScalarWhereInput[]
   }
 
+  export type weightUncheckedUpdateManyWithoutBabyNestedInput = {
+    create?: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput> | weightCreateWithoutBabyInput[] | weightUncheckedCreateWithoutBabyInput[]
+    connectOrCreate?: weightCreateOrConnectWithoutBabyInput | weightCreateOrConnectWithoutBabyInput[]
+    upsert?: weightUpsertWithWhereUniqueWithoutBabyInput | weightUpsertWithWhereUniqueWithoutBabyInput[]
+    createMany?: weightCreateManyBabyInputEnvelope
+    set?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    disconnect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    delete?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    connect?: weightWhereUniqueInput | weightWhereUniqueInput[]
+    update?: weightUpdateWithWhereUniqueWithoutBabyInput | weightUpdateWithWhereUniqueWithoutBabyInput[]
+    updateMany?: weightUpdateManyWithWhereWithoutBabyInput | weightUpdateManyWithWhereWithoutBabyInput[]
+    deleteMany?: weightScalarWhereInput | weightScalarWhereInput[]
+  }
+
   export type babyCreateNestedOneWithoutParentsInput = {
     create?: XOR<babyCreateWithoutParentsInput, babyUncheckedCreateWithoutParentsInput>
     connectOrCreate?: babyCreateOrConnectWithoutParentsInput
@@ -5189,16 +6684,30 @@ export namespace Prisma {
     connect?: babyWhereUniqueInput
   }
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
-  }
-
   export type babyUpdateOneRequiredWithoutMealNestedInput = {
     create?: XOR<babyCreateWithoutMealInput, babyUncheckedCreateWithoutMealInput>
     connectOrCreate?: babyCreateOrConnectWithoutMealInput
     upsert?: babyUpsertWithoutMealInput
     connect?: babyWhereUniqueInput
     update?: XOR<XOR<babyUpdateToOneWithWhereWithoutMealInput, babyUpdateWithoutMealInput>, babyUncheckedUpdateWithoutMealInput>
+  }
+
+  export type babyCreateNestedOneWithoutWeightInput = {
+    create?: XOR<babyCreateWithoutWeightInput, babyUncheckedCreateWithoutWeightInput>
+    connectOrCreate?: babyCreateOrConnectWithoutWeightInput
+    connect?: babyWhereUniqueInput
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
+  export type babyUpdateOneRequiredWithoutWeightNestedInput = {
+    create?: XOR<babyCreateWithoutWeightInput, babyUncheckedCreateWithoutWeightInput>
+    connectOrCreate?: babyCreateOrConnectWithoutWeightInput
+    upsert?: babyUpsertWithoutWeightInput
+    connect?: babyWhereUniqueInput
+    update?: XOR<XOR<babyUpdateToOneWithWhereWithoutWeightInput, babyUpdateWithoutWeightInput>, babyUncheckedUpdateWithoutWeightInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5224,6 +6733,17 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5270,17 +6790,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5293,6 +6802,48 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type parentCreateWithoutBabyInput = {
@@ -5336,6 +6887,29 @@ export namespace Prisma {
 
   export type mealCreateManyBabyInputEnvelope = {
     data: mealCreateManyBabyInput | mealCreateManyBabyInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type weightCreateWithoutBabyInput = {
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
+  }
+
+  export type weightUncheckedCreateWithoutBabyInput = {
+    id?: number
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
+  }
+
+  export type weightCreateOrConnectWithoutBabyInput = {
+    where: weightWhereUniqueInput
+    create: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput>
+  }
+
+  export type weightCreateManyBabyInputEnvelope = {
+    data: weightCreateManyBabyInput | weightCreateManyBabyInput[]
     skipDuplicates?: boolean
   }
 
@@ -5392,12 +6966,40 @@ export namespace Prisma {
     babyId?: IntFilter<"meal"> | number
   }
 
+  export type weightUpsertWithWhereUniqueWithoutBabyInput = {
+    where: weightWhereUniqueInput
+    update: XOR<weightUpdateWithoutBabyInput, weightUncheckedUpdateWithoutBabyInput>
+    create: XOR<weightCreateWithoutBabyInput, weightUncheckedCreateWithoutBabyInput>
+  }
+
+  export type weightUpdateWithWhereUniqueWithoutBabyInput = {
+    where: weightWhereUniqueInput
+    data: XOR<weightUpdateWithoutBabyInput, weightUncheckedUpdateWithoutBabyInput>
+  }
+
+  export type weightUpdateManyWithWhereWithoutBabyInput = {
+    where: weightScalarWhereInput
+    data: XOR<weightUpdateManyMutationInput, weightUncheckedUpdateManyWithoutBabyInput>
+  }
+
+  export type weightScalarWhereInput = {
+    AND?: weightScalarWhereInput | weightScalarWhereInput[]
+    OR?: weightScalarWhereInput[]
+    NOT?: weightScalarWhereInput | weightScalarWhereInput[]
+    id?: IntFilter<"weight"> | number
+    weight?: StringFilter<"weight"> | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
+    babyId?: IntFilter<"weight"> | number
+  }
+
   export type babyCreateWithoutParentsInput = {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     meal?: mealCreateNestedManyWithoutBabyInput
+    weight?: weightCreateNestedManyWithoutBabyInput
   }
 
   export type babyUncheckedCreateWithoutParentsInput = {
@@ -5405,8 +7007,9 @@ export namespace Prisma {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     meal?: mealUncheckedCreateNestedManyWithoutBabyInput
+    weight?: weightUncheckedCreateNestedManyWithoutBabyInput
   }
 
   export type babyCreateOrConnectWithoutParentsInput = {
@@ -5429,8 +7032,9 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     meal?: mealUpdateManyWithoutBabyNestedInput
+    weight?: weightUpdateManyWithoutBabyNestedInput
   }
 
   export type babyUncheckedUpdateWithoutParentsInput = {
@@ -5438,16 +7042,18 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     meal?: mealUncheckedUpdateManyWithoutBabyNestedInput
+    weight?: weightUncheckedUpdateManyWithoutBabyNestedInput
   }
 
   export type babyCreateWithoutMealInput = {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     parents?: parentCreateNestedManyWithoutBabyInput
+    weight?: weightCreateNestedManyWithoutBabyInput
   }
 
   export type babyUncheckedCreateWithoutMealInput = {
@@ -5455,8 +7061,9 @@ export namespace Prisma {
     firstName: string
     lastName: string
     height: number
-    weight: number
+    dateOfBirth: Date | string
     parents?: parentUncheckedCreateNestedManyWithoutBabyInput
+    weight?: weightUncheckedCreateNestedManyWithoutBabyInput
   }
 
   export type babyCreateOrConnectWithoutMealInput = {
@@ -5479,8 +7086,9 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     parents?: parentUpdateManyWithoutBabyNestedInput
+    weight?: weightUpdateManyWithoutBabyNestedInput
   }
 
   export type babyUncheckedUpdateWithoutMealInput = {
@@ -5488,8 +7096,63 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     height?: IntFieldUpdateOperationsInput | number
-    weight?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
     parents?: parentUncheckedUpdateManyWithoutBabyNestedInput
+    weight?: weightUncheckedUpdateManyWithoutBabyNestedInput
+  }
+
+  export type babyCreateWithoutWeightInput = {
+    firstName: string
+    lastName: string
+    height: number
+    dateOfBirth: Date | string
+    parents?: parentCreateNestedManyWithoutBabyInput
+    meal?: mealCreateNestedManyWithoutBabyInput
+  }
+
+  export type babyUncheckedCreateWithoutWeightInput = {
+    id?: number
+    firstName: string
+    lastName: string
+    height: number
+    dateOfBirth: Date | string
+    parents?: parentUncheckedCreateNestedManyWithoutBabyInput
+    meal?: mealUncheckedCreateNestedManyWithoutBabyInput
+  }
+
+  export type babyCreateOrConnectWithoutWeightInput = {
+    where: babyWhereUniqueInput
+    create: XOR<babyCreateWithoutWeightInput, babyUncheckedCreateWithoutWeightInput>
+  }
+
+  export type babyUpsertWithoutWeightInput = {
+    update: XOR<babyUpdateWithoutWeightInput, babyUncheckedUpdateWithoutWeightInput>
+    create: XOR<babyCreateWithoutWeightInput, babyUncheckedCreateWithoutWeightInput>
+    where?: babyWhereInput
+  }
+
+  export type babyUpdateToOneWithWhereWithoutWeightInput = {
+    where?: babyWhereInput
+    data: XOR<babyUpdateWithoutWeightInput, babyUncheckedUpdateWithoutWeightInput>
+  }
+
+  export type babyUpdateWithoutWeightInput = {
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    parents?: parentUpdateManyWithoutBabyNestedInput
+    meal?: mealUpdateManyWithoutBabyNestedInput
+  }
+
+  export type babyUncheckedUpdateWithoutWeightInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    height?: IntFieldUpdateOperationsInput | number
+    dateOfBirth?: DateTimeFieldUpdateOperationsInput | Date | string
+    parents?: parentUncheckedUpdateManyWithoutBabyNestedInput
+    meal?: mealUncheckedUpdateManyWithoutBabyNestedInput
   }
 
   export type parentCreateManyBabyInput = {
@@ -5503,6 +7166,13 @@ export namespace Prisma {
     meal: string
     mealQnt: string
     mealTime: Date | string
+  }
+
+  export type weightCreateManyBabyInput = {
+    id?: number
+    weight: string
+    weightTime: Date | string
+    weightComment?: string | null
   }
 
   export type parentUpdateWithoutBabyInput = {
@@ -5540,6 +7210,26 @@ export namespace Prisma {
     meal?: StringFieldUpdateOperationsInput | string
     mealQnt?: StringFieldUpdateOperationsInput | string
     mealTime?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type weightUpdateWithoutBabyInput = {
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type weightUncheckedUpdateWithoutBabyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type weightUncheckedUpdateManyWithoutBabyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    weight?: StringFieldUpdateOperationsInput | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
