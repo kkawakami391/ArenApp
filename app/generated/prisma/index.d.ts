@@ -4720,7 +4720,7 @@ export namespace Prisma {
     id: number
     weight: string
     weightTime: Date
-    weightComment: string
+    weightComment: string | null
     babyId: number
     _count: WeightCountAggregateOutputType | null
     _avg: WeightAvgAggregateOutputType | null
@@ -4798,7 +4798,7 @@ export namespace Prisma {
       id: number
       weight: string
       weightTime: Date
-      weightComment: string
+      weightComment: string | null
       babyId: number
     }, ExtArgs["result"]["weight"]>
     composites: {}
@@ -5716,6 +5716,14 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   /**
    * Field references
    */
@@ -5959,7 +5967,7 @@ export namespace Prisma {
     id?: IntFilter<"weight"> | number
     weight?: StringFilter<"weight"> | string
     weightTime?: DateTimeFilter<"weight"> | Date | string
-    weightComment?: StringFilter<"weight"> | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
     babyId?: IntFilter<"weight"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }
@@ -5968,7 +5976,7 @@ export namespace Prisma {
     id?: SortOrder
     weight?: SortOrder
     weightTime?: SortOrder
-    weightComment?: SortOrder
+    weightComment?: SortOrderInput | SortOrder
     babyId?: SortOrder
     baby?: babyOrderByWithRelationInput
   }
@@ -5980,7 +5988,7 @@ export namespace Prisma {
     NOT?: weightWhereInput | weightWhereInput[]
     weight?: StringFilter<"weight"> | string
     weightTime?: DateTimeFilter<"weight"> | Date | string
-    weightComment?: StringFilter<"weight"> | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
     babyId?: IntFilter<"weight"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }, "id">
@@ -5989,7 +5997,7 @@ export namespace Prisma {
     id?: SortOrder
     weight?: SortOrder
     weightTime?: SortOrder
-    weightComment?: SortOrder
+    weightComment?: SortOrderInput | SortOrder
     babyId?: SortOrder
     _count?: weightCountOrderByAggregateInput
     _avg?: weightAvgOrderByAggregateInput
@@ -6005,7 +6013,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"weight"> | number
     weight?: StringWithAggregatesFilter<"weight"> | string
     weightTime?: DateTimeWithAggregatesFilter<"weight"> | Date | string
-    weightComment?: StringWithAggregatesFilter<"weight"> | string
+    weightComment?: StringNullableWithAggregatesFilter<"weight"> | string | null
     babyId?: IntWithAggregatesFilter<"weight"> | number
   }
 
@@ -6174,7 +6182,7 @@ export namespace Prisma {
   export type weightCreateInput = {
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
     baby: babyCreateNestedOneWithoutWeightInput
   }
 
@@ -6182,14 +6190,14 @@ export namespace Prisma {
     id?: number
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
     babyId: number
   }
 
   export type weightUpdateInput = {
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
     baby?: babyUpdateOneRequiredWithoutWeightNestedInput
   }
 
@@ -6197,7 +6205,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6205,21 +6213,21 @@ export namespace Prisma {
     id?: number
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
     babyId: number
   }
 
   export type weightUpdateManyMutationInput = {
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type weightUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6442,6 +6450,26 @@ export namespace Prisma {
     babyId?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
   export type weightCountOrderByAggregateInput = {
     id?: SortOrder
     weight?: SortOrder
@@ -6474,6 +6502,24 @@ export namespace Prisma {
   export type weightSumOrderByAggregateInput = {
     id?: SortOrder
     babyId?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type parentCreateNestedManyWithoutBabyInput = {
@@ -6652,6 +6698,10 @@ export namespace Prisma {
     connect?: babyWhereUniqueInput
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type babyUpdateOneRequiredWithoutWeightNestedInput = {
     create?: XOR<babyCreateWithoutWeightInput, babyUncheckedCreateWithoutWeightInput>
     connectOrCreate?: babyCreateOrConnectWithoutWeightInput
@@ -6754,6 +6804,48 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type parentCreateWithoutBabyInput = {
     firstName: string
     lastName: string
@@ -6801,14 +6893,14 @@ export namespace Prisma {
   export type weightCreateWithoutBabyInput = {
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
   }
 
   export type weightUncheckedCreateWithoutBabyInput = {
     id?: number
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
   }
 
   export type weightCreateOrConnectWithoutBabyInput = {
@@ -6897,7 +6989,7 @@ export namespace Prisma {
     id?: IntFilter<"weight"> | number
     weight?: StringFilter<"weight"> | string
     weightTime?: DateTimeFilter<"weight"> | Date | string
-    weightComment?: StringFilter<"weight"> | string
+    weightComment?: StringNullableFilter<"weight"> | string | null
     babyId?: IntFilter<"weight"> | number
   }
 
@@ -7080,7 +7172,7 @@ export namespace Prisma {
     id?: number
     weight: string
     weightTime: Date | string
-    weightComment: string
+    weightComment?: string | null
   }
 
   export type parentUpdateWithoutBabyInput = {
@@ -7123,21 +7215,21 @@ export namespace Prisma {
   export type weightUpdateWithoutBabyInput = {
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type weightUncheckedUpdateWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type weightUncheckedUpdateManyWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
     weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    weightComment?: StringFieldUpdateOperationsInput | string
+    weightComment?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

@@ -41,7 +41,7 @@ model weight {
   id            Int      @id @default(autoincrement())
   weight        String
   weightTime    DateTime
-  weightComment String
+  weightComment String?
   babyId        Int
   baby          baby     @relation(fields: [babyId], references: [id])
 }
