@@ -5,7 +5,6 @@ import { MealFormSchema, mealFormSchema } from "../models/MealSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { registBabyMeal } from "../actions/registBabyMeal";
 
 export default function MealPage() {
   const [message, setMessage] = useState("");
@@ -42,6 +41,8 @@ export default function MealPage() {
       reset();
     } catch (error) {
       console.error(error);
+      //TODO: Checkear si esto da un mensaje de error apropiado
+      setError(String(error));
     }
   }
   // ----------------------------------------------------------------
