@@ -1,5 +1,5 @@
 {
-  "name": "prisma-client-f8b1c5bb6534cb59b02f51246198a97f8d2c78c4f1986af5d1cf641c535e1a89",
+  "name": "prisma-client-b1fb6665407e0c92ec5b91469f7a4b2c7ca2b8a5250ce3a3876216309116492a",
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "index-browser.js",
@@ -97,11 +97,17 @@
       "import": "./runtime/binary.mjs",
       "default": "./runtime/binary.mjs"
     },
-    "./runtime/wasm": {
-      "types": "./runtime/wasm.d.ts",
-      "require": "./runtime/wasm.js",
-      "import": "./runtime/wasm.mjs",
-      "default": "./runtime/wasm.mjs"
+    "./runtime/wasm-engine-edge": {
+      "types": "./runtime/wasm-engine-edge.d.ts",
+      "require": "./runtime/wasm-engine-edge.js",
+      "import": "./runtime/wasm-engine-edge.mjs",
+      "default": "./runtime/wasm-engine-edge.mjs"
+    },
+    "./runtime/wasm-compiler-edge": {
+      "types": "./runtime/wasm-compiler-edge.d.ts",
+      "require": "./runtime/wasm-compiler-edge.js",
+      "import": "./runtime/wasm-compiler-edge.mjs",
+      "default": "./runtime/wasm-compiler-edge.mjs"
     },
     "./runtime/edge": {
       "types": "./runtime/edge.d.ts",
@@ -122,19 +128,25 @@
     },
     "./sql": {
       "require": {
-        "types": "./sql.d.ts",
-        "node": "./sql.js",
-        "default": "./sql.js"
+        "types": "./sql/index.d.ts",
+        "edge-light": "./sql/index.edge.js",
+        "workerd": "./sql/index.edge.js",
+        "worker": "./sql/index.edge.js",
+        "node": "./sql/index.js",
+        "default": "./sql/index.js"
       },
       "import": {
-        "types": "./sql.d.ts",
-        "node": "./sql.mjs",
-        "default": "./sql.mjs"
+        "types": "./sql/index.d.ts",
+        "edge-light": "./sql/index.edge.mjs",
+        "workerd": "./sql/index.edge.mjs",
+        "worker": "./sql/index.edge.mjs",
+        "node": "./sql/index.mjs",
+        "default": "./sql/index.mjs"
       },
-      "default": "./sql.js"
+      "default": "./sql/index.js"
     },
     "./*": "./*"
   },
-  "version": "6.8.2",
+  "version": "6.11.1",
   "sideEffects": false
 }

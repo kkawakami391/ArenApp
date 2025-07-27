@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+  output          = "../app/generated/prisma"
 }
 
 datasource db {
@@ -39,8 +40,8 @@ model meal {
 model weight {
   id            Int      @id @default(autoincrement())
   weight        String
-  weightTime    String
-  weightComment DateTime
+  weightTime    DateTime
+  weightComment String
   babyId        Int
   baby          baby     @relation(fields: [babyId], references: [id])
 }

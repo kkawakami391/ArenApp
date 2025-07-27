@@ -136,6 +136,16 @@ export class PrismaClient<
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
+  /**
+   * Executes a typed SQL query and returns a typed result
+   * @example
+   * ```
+   * import { myQuery } from '@prisma/client/sql'
+   * 
+   * const result = await prisma.$queryRawTyped(myQuery())
+   * ```
+   */
+  $queryRawTyped<T>(typedSql: runtime.TypedSql<unknown[], T>): Prisma.PrismaPromise<T[]>
 
   /**
    * Allows the running of a sequence of read/write operations that are guaranteed to either succeed or fail as a whole.
@@ -256,8 +266,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.11.1
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -980,6 +990,10 @@ export namespace Prisma {
         $queryRawUnsafe: {
           args: [query: string, ...values: any[]],
           result: any
+        }
+        $queryRawTyped: {
+          args: runtime.UnknownTypedSql,
+          result: Prisma.JsonObject
         }
       }
     }
@@ -4558,16 +4572,16 @@ export namespace Prisma {
   export type WeightMinAggregateOutputType = {
     id: number | null
     weight: string | null
-    weightTime: string | null
-    weightComment: Date | null
+    weightTime: Date | null
+    weightComment: string | null
     babyId: number | null
   }
 
   export type WeightMaxAggregateOutputType = {
     id: number | null
     weight: string | null
-    weightTime: string | null
-    weightComment: Date | null
+    weightTime: Date | null
+    weightComment: string | null
     babyId: number | null
   }
 
@@ -4705,8 +4719,8 @@ export namespace Prisma {
   export type WeightGroupByOutputType = {
     id: number
     weight: string
-    weightTime: string
-    weightComment: Date
+    weightTime: Date
+    weightComment: string
     babyId: number
     _count: WeightCountAggregateOutputType | null
     _avg: WeightAvgAggregateOutputType | null
@@ -4783,8 +4797,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       weight: string
-      weightTime: string
-      weightComment: Date
+      weightTime: Date
+      weightComment: string
       babyId: number
     }, ExtArgs["result"]["weight"]>
     composites: {}
@@ -5212,8 +5226,8 @@ export namespace Prisma {
   interface weightFieldRefs {
     readonly id: FieldRef<"weight", 'Int'>
     readonly weight: FieldRef<"weight", 'String'>
-    readonly weightTime: FieldRef<"weight", 'String'>
-    readonly weightComment: FieldRef<"weight", 'DateTime'>
+    readonly weightTime: FieldRef<"weight", 'DateTime'>
+    readonly weightComment: FieldRef<"weight", 'String'>
     readonly babyId: FieldRef<"weight", 'Int'>
   }
     
@@ -5944,8 +5958,8 @@ export namespace Prisma {
     NOT?: weightWhereInput | weightWhereInput[]
     id?: IntFilter<"weight"> | number
     weight?: StringFilter<"weight"> | string
-    weightTime?: StringFilter<"weight"> | string
-    weightComment?: DateTimeFilter<"weight"> | Date | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringFilter<"weight"> | string
     babyId?: IntFilter<"weight"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }
@@ -5965,8 +5979,8 @@ export namespace Prisma {
     OR?: weightWhereInput[]
     NOT?: weightWhereInput | weightWhereInput[]
     weight?: StringFilter<"weight"> | string
-    weightTime?: StringFilter<"weight"> | string
-    weightComment?: DateTimeFilter<"weight"> | Date | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringFilter<"weight"> | string
     babyId?: IntFilter<"weight"> | number
     baby?: XOR<BabyScalarRelationFilter, babyWhereInput>
   }, "id">
@@ -5990,8 +6004,8 @@ export namespace Prisma {
     NOT?: weightScalarWhereWithAggregatesInput | weightScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"weight"> | number
     weight?: StringWithAggregatesFilter<"weight"> | string
-    weightTime?: StringWithAggregatesFilter<"weight"> | string
-    weightComment?: DateTimeWithAggregatesFilter<"weight"> | Date | string
+    weightTime?: DateTimeWithAggregatesFilter<"weight"> | Date | string
+    weightComment?: StringWithAggregatesFilter<"weight"> | string
     babyId?: IntWithAggregatesFilter<"weight"> | number
   }
 
@@ -6159,53 +6173,53 @@ export namespace Prisma {
 
   export type weightCreateInput = {
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
     baby: babyCreateNestedOneWithoutWeightInput
   }
 
   export type weightUncheckedCreateInput = {
     id?: number
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
     babyId: number
   }
 
   export type weightUpdateInput = {
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
     baby?: babyUpdateOneRequiredWithoutWeightNestedInput
   }
 
   export type weightUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
   export type weightCreateManyInput = {
     id?: number
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
     babyId: number
   }
 
   export type weightUpdateManyMutationInput = {
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
   }
 
   export type weightUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
     babyId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -6786,15 +6800,15 @@ export namespace Prisma {
 
   export type weightCreateWithoutBabyInput = {
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
   }
 
   export type weightUncheckedCreateWithoutBabyInput = {
     id?: number
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
   }
 
   export type weightCreateOrConnectWithoutBabyInput = {
@@ -6882,8 +6896,8 @@ export namespace Prisma {
     NOT?: weightScalarWhereInput | weightScalarWhereInput[]
     id?: IntFilter<"weight"> | number
     weight?: StringFilter<"weight"> | string
-    weightTime?: StringFilter<"weight"> | string
-    weightComment?: DateTimeFilter<"weight"> | Date | string
+    weightTime?: DateTimeFilter<"weight"> | Date | string
+    weightComment?: StringFilter<"weight"> | string
     babyId?: IntFilter<"weight"> | number
   }
 
@@ -7065,8 +7079,8 @@ export namespace Prisma {
   export type weightCreateManyBabyInput = {
     id?: number
     weight: string
-    weightTime: string
-    weightComment: Date | string
+    weightTime: Date | string
+    weightComment: string
   }
 
   export type parentUpdateWithoutBabyInput = {
@@ -7108,22 +7122,22 @@ export namespace Prisma {
 
   export type weightUpdateWithoutBabyInput = {
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
   }
 
   export type weightUncheckedUpdateWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
   }
 
   export type weightUncheckedUpdateManyWithoutBabyInput = {
     id?: IntFieldUpdateOperationsInput | number
     weight?: StringFieldUpdateOperationsInput | string
-    weightTime?: StringFieldUpdateOperationsInput | string
-    weightComment?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    weightComment?: StringFieldUpdateOperationsInput | string
   }
 
 
