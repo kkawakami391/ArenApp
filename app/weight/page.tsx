@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 export default function MealPage() {
-  const [message, setMessage] = useState("");
+  const [ageMessage, setAgeMessage] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [maxDate, setMaxDate] = useState("");
 
@@ -19,7 +19,9 @@ export default function MealPage() {
     watch,
     formState: { errors },
   } = useForm<WeightFormData>({ resolver: zodResolver(weightSchema) });
-  console.log(watch("weightTime"));
+
+  // Variable para actualizar el horario limite de registro
+  const weightTime = watch("weightTime");
 
   async function onSubmit(data: WeightFormData) {
     // TODO: Obtener el babyId desde datos del login?
@@ -37,27 +39,32 @@ export default function MealPage() {
       const result = await response.json();
 
       // TODO: Utilizar el mensaje del response para darle un feedback al usuario
-      setMessage(result.message);
+      setSuccessMsg(result.message);
+      setAgeMessage(result.babyAge[0].age);
       reset();
     } catch (error) {
+      // TODO: Manipular mejor los mensajes de error
       console.error(error);
     }
   }
-
-  // async function onSubmit() {
-  //   return console.log("weight");
-  // }
 
   // Hacer focus al input
   useEffect(() => {
     setFocus("weight");
     setMaxDate(dayjs().format("YYYY-MM-DDTHH:mm"));
-  }, [setFocus]);
+  }, [setFocus, weightTime]);
 
   return (
     // TODO: Agregar un text donde indique la edad del bebe. Se puede lograr usando AGE() postgres.
     <div className="flex flex-col items-center justify-center">
-      {/* {message && <p className="text-2xl text-blue-500 mb-5">{message}</p>} */}
+      {successMsg && (
+        <p className="text-2xl text-blue-500 mb-5">{successMsg}</p>
+      )}
+      {ageMessage && (
+        <p className="text-2xl text-blue-500 mb-5">
+          Edad del bebe: {ageMessage}
+        </p>
+      )}
       <form
         className="flex flex-col items-start space-y-1"
         onSubmit={handleSubmit(onSubmit)}

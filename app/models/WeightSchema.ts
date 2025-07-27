@@ -8,7 +8,10 @@ export const weightSchema = z.object({
   weightTime: z.string().refine((val) => dayjs(val).isValid(), {
     message: "El formato del date es invalido",
   }),
-  weightComment: z.string().max(100, "Sobrepasaste la cantidad de caracteres."),
+  weightComment: z
+    .string()
+    .max(100, "Sobrepasaste la cantidad de caracteres.")
+    .optional(),
 });
 
 export type WeightFormData = z.infer<typeof weightSchema>;

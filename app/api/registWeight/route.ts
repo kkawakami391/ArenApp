@@ -1,4 +1,5 @@
 import { prisma } from "@/app/client/client";
+import { getBabyAge } from "../../generated/prisma/sql";
 import { weightRequestSchema } from "@/app/models/WeightSchema";
 import { NextResponse } from "next/server";
 
@@ -25,25 +26,30 @@ export async function POST(request: Request) {
     },
   });
 
-  // Devolver la diferencia de edades con postgres Age()
   // Obtener la edad del bebe
-  const babyBirthDate = await prisma.baby.findUnique({
+  const weightBabyAge = await prisma.baby.findUnique({
     where: { id: 1 },
     select: { dateOfBirth: true },
   });
-  console.log("babyBirth", babyBirthDate);
+
+  // Si no existe el dato del bebe, terminar la operacion.
+  if (!weightBabyAge) {
+    return NextResponse.json(
+      {
+        error: "No existe la fecha de nacimiento del bebe en la base de datos.",
+      },
+      { status: 400 },
+    );
+  }
 
   // Calcular la edad usando el Age con el queryRaw
-  const ageResult = await.prisma.$queryRawUnsafe<{ age: string}[]>(
-    `SELECT AGE($1::timestamp, $2::timestamp) as age`,
-    data.weightTime,
-    babyBirthDate?.dateOfBirth
-  )
-
-  console.log("ageResult",ageResult)
+  const babyAge = await prisma.$queryRawTyped(
+    getBabyAge(new Date(data.weightTime), weightBabyAge.dateOfBirth),
+  );
 
   return NextResponse.json({
     data: registeredWeight,
+    babyAge: babyAge,
     message: "Registro de peso exitoso!",
   });
 }
