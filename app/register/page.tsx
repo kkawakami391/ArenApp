@@ -11,7 +11,7 @@ import {
 
 function Register() {
   return (
-    <div className="grid grid-cols-2 justify-items-center items-center">
+    <div className="grid grid-cols-2 justify-items-center items-center mt-10">
       <RegisterCard label="Meal" icon={<MilkIcon />} route={"/meal"} />
       <RegisterCard label="Weight" icon={<WeightIcon />} route={"/weight"} />
       <RegisterCard label="Height" icon={<HeightIcon />} route={"/height"} />
