@@ -18,10 +18,16 @@ export default function Home() {
             crecimiento de tu bebé.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            <button className="px-8 py-4 bg-brown text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 shadow-lg">
+            <button
+              className="px-8 py-4 bg-brown text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 shadow-lg"
+              aria-label="Registrar nueva cuenta"
+            >
               Registrar
             </button>
-            <button className="px-8 py-4 bg-light-green text-gray-900 font-medium rounded-lg hover:bg-green transition duration-300 shadow-sm border border-gray-blue">
+            <button
+              className="px-8 py-4 bg-light-green text-gray-900 font-medium rounded-lg hover:bg-green transition duration-300 shadow-sm border border-gray-blue"
+              aria-label="Ver demostracion de la app"
+            >
               Ver Demo
             </button>
           </div>
@@ -32,15 +38,14 @@ export default function Home() {
           <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl border-8 border-gray-blue">
             <Image
               src="/baby_lp.jpg"
-              alt="App Dashboard Preview"
-              layout="fill"
-              objectFit="cover"
-              className="rounded-lg"
+              alt="Vista previa del panel de la aplicacion"
+              fill
+              className="rounded-lg object-cover"
             />
           </div>
           {/* Decorative elements using your palette */}
           <div className="absolute -top-6 -right-6 w-32 h-32 bg-green rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-custom rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-custom rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob delay-2000"></div>
         </div>
       </div>
     </div>

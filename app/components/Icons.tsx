@@ -132,7 +132,7 @@ export function ArenLogo() {
 export function PencilLogo({ path }: { path: string }) {
   return (
     <svg
-      className={`text-black md:size-8 ${path === "/register" ? "text-blue-500" : null}`}
+      className={`text-black md:size-8 ${path === "/register" ? "text-blue-500" : ""}`}
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="24"
