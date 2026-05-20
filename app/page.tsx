@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { signIn, signOut } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -21,12 +24,14 @@ export default function Home() {
             <button
               className="px-8 py-4 bg-brown text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 shadow-lg"
               aria-label="Registrar nueva cuenta"
+              onClick={() => signIn()}
             >
               Registrar
             </button>
             <button
               className="px-8 py-4 bg-light-green text-gray-900 font-medium rounded-lg hover:bg-green transition duration-300 shadow-sm border border-gray-blue"
               aria-label="Ver demostracion de la app"
+              onClick={() => signOut()}
             >
               Ver Demo
             </button>
