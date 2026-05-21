@@ -6,6 +6,7 @@ import React from "react";
 import { ArenLogo, PencilLogo } from "./Icons";
 import { useSession, signOut } from "next-auth/react";
 
+
 function NavBar() {
   const path = usePathname();
   const { data: session } = useSession();
@@ -21,7 +22,7 @@ function NavBar() {
             </div>
           </Link>
           <Link
-            className={`inline-block font-semibold md:text-2xl md:hover:bg-dark-cream hover:rounded-lg my-2 p-2 ${path === "/register" ? "text-blue-500 underline decoration-2" : null}`}
+            className={`inline-block font-semibold md:text-2xl md:hover:bg-dark-cream hover:rounded-lg my-2 p-2 ${path === "/register" ? "text-blue-500 underline decoration-2" : ""}`}
             href="/register"
           >
             <div className="flex items-center">
@@ -31,26 +32,23 @@ function NavBar() {
           </Link>
           <div>
             <Link
-              className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/baby" ? "text-blue-500 underline decoration-2" : null}`}
+              className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/baby" ? "text-blue-500 underline decoration-2" : ""}`}
               href="/baby"
             >
               Baby
             </Link>
             <Link
-              className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/parents" ? "text-blue-500 underline decoration-2" : null}`}
+              className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/parents" ? "text-blue-500 underline decoration-2" : ""}`}
               href="/parents"
             >
               Parents
             </Link>
-            <Link
-              className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/parents" ? "text-blue-500 underline decoration-2" : null}`}
-              href=""
-              onClick={() => {
-                signOut();
-              }}
+            <button
+              className="inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2"
+              onClick={() => signOut({ callbackUrl: "/" })}
             >
               Sign out
-            </Link>
+            </button>
           </div>
         </div>
       </nav>
@@ -67,13 +65,13 @@ function NavBar() {
         </Link>
         <div>
           <Link
-            className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/login" ? "text-blue-500 underline decoration-2" : null}`}
+            className={`inline-block font-semibold md:text-lg md:hover:bg-dark-cream hover:rounded-lg mx-2 my-2 p-2 ${path === "/login" ? "text-blue-500 underline decoration-2" : ""}`}
             href="/login"
           >
             Sign in
           </Link>
           <Link
-            className={`inline-block font-semibold md:text-lg bg-brown text-white hover:bg-opacity-90 rounded-lg mx-2 my-2 p-2 ${path === "/signup" ? "opacity-80" : null}`}
+            className={`inline-block font-semibold md:text-lg bg-brown text-white hover:bg-opacity-90 rounded-lg mx-2 my-2 p-2 ${path === "/signup" ? "opacity-80" : ""}`}
             href="/signup"
           >
             Sign up

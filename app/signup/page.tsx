@@ -39,30 +39,35 @@ export default function SignupPage() {
     setIsLoading(true);
     setServerError(null);
 
-    const res = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: data.name,
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      const body = await res.json();
+
+      if (!res.ok) {
+        setServerError(body.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      // Auto sign-in after successful registration
+      await signIn("credentials", {
         email: data.email,
         password: data.password,
-      }),
-    });
-
-    const body = await res.json();
-
-    if (!res.ok) {
-      setServerError(body.error ?? "Something went wrong. Please try again.");
+        callbackUrl: "/register",
+      });
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+    } finally {
       setIsLoading(false);
-      return;
     }
-
-    // Auto sign-in after successful registration
-    await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      callbackUrl: "/register",
-    });
   }
 
   return (

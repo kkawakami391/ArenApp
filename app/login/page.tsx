@@ -27,7 +27,12 @@ const NEXTAUTH_ERROR_MESSAGES: Record<string, string> = {
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") ?? "/register";
+  const rawCallbackUrl = searchParams.get("callbackUrl") ?? "/register";
+  // Restrict to same-origin paths to prevent open redirect attacks
+  const callbackUrl =
+    rawCallbackUrl.startsWith("/") && !rawCallbackUrl.startsWith("//")
+      ? rawCallbackUrl
+      : "/register";
   const errorParam = searchParams.get("error");
   const oauthError = errorParam
     ? (NEXTAUTH_ERROR_MESSAGES[errorParam] ?? NEXTAUTH_ERROR_MESSAGES.Default)
