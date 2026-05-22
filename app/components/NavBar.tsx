@@ -6,7 +6,6 @@ import React from "react";
 import { ArenLogo, PencilLogo } from "./Icons";
 import { useSession, signOut } from "next-auth/react";
 
-
 function NavBar() {
   const path = usePathname();
   const { data: session } = useSession();
