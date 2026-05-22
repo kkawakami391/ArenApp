@@ -1,1 +1,1 @@
-export * from "./getBabyAge"
+export * from "./getBabyAge";

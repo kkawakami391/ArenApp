@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,18 +21,20 @@ export default function Home() {
             crecimiento de tu bebé.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-            <button
+            <Link
+              href="/signup"
               className="px-8 py-4 bg-brown text-white font-medium rounded-lg hover:bg-opacity-90 transition duration-300 shadow-lg"
               aria-label="Registrar nueva cuenta"
             >
               Registrar
-            </button>
-            <button
+            </Link>
+            <Link
+              href="/demo"
               className="px-8 py-4 bg-light-green text-gray-900 font-medium rounded-lg hover:bg-green transition duration-300 shadow-sm border border-gray-blue"
               aria-label="Ver demostracion de la app"
             >
               Ver Demo
-            </button>
+            </Link>
           </div>
         </div>
 
